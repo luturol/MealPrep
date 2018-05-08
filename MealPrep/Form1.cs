@@ -27,9 +27,9 @@ namespace MealPrep
         private void Initialize()
         {
             ConnectionPostgres conn = new ConnectionPostgres("127.0.0.1", "5432", "postgres", "a.123456", "mealprep");
-            UserController userControl = new UserController(new UserDao(conn));
-            panelAddUser.Controls.Add(new ucAddUser(userControl));
-            panelLogin.Controls.Add(new ucLogin());
+            UserController userController = new UserController(new UserDao(conn));
+            panelAddUser.Controls.Add(new ucAddUser(userController));
+            panelLogin.Controls.Add(new ucLogin(userController));
         }        
     }
 }

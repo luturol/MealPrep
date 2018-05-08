@@ -19,13 +19,25 @@ namespace MealPrep.Controller
         
         public bool addUser(User user)
         {
-            if (!GetAllUsers().Exists(u => u.Name == user.Name && u.Password == user.Password))
+            if (!UserExists(user))
             {
                 return dao.addUser(user);
             }
             else
             {
                 throw new Exception(ERROR_USER_ALREADY_EXIST);
+            }
+        }
+
+        public bool UserExists(User user)
+        {
+            if (GetAllUsers().Exists(u => u.Name == user.Name && u.Password == user.Password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
