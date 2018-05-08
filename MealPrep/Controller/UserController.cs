@@ -1,0 +1,38 @@
+﻿using MealPrep.Dao;
+using MealPrep.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MealPrep.Controller
+{
+    public class UserController
+    {        
+        private UserDao dao;
+        private const String ERROR_USER_ALREADY_EXIST = "Error! User already exists.";
+        public UserController(UserDao dao)
+        {
+            this.dao = dao;
+        }
+        
+        public bool addUser(User user)
+        {
+            if (!GetAllUsers().Exists(u => u.Name == user.Name && u.Password == user.Password))
+            {
+                return dao.addUser(user);
+            }
+            else
+            {
+                throw new Exception(ERROR_USER_ALREADY_EXIST);
+            }
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return dao.GetAllUsers();
+        }
+        
+    }
+}

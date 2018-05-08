@@ -28,13 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.panelAddUser = new System.Windows.Forms.Panel();
+            this.panelLogin = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // panelAddUser
+            // 
+            this.panelAddUser.Location = new System.Drawing.Point(474, 83);
+            this.panelAddUser.Name = "panelAddUser";
+            this.panelAddUser.Size = new System.Drawing.Size(360, 435);
+            this.panelAddUser.TabIndex = 0;
+            // 
+            // panelLogin
+            // 
+            this.panelLogin.Location = new System.Drawing.Point(1, 2);
+            this.panelLogin.Name = "panelLogin";
+            this.panelLogin.Size = new System.Drawing.Size(833, 75);
+            this.panelLogin.TabIndex = 1;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(837, 519);
+            this.Controls.Add(this.panelLogin);
+            this.Controls.Add(this.panelAddUser);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panelAddUser;
+        private System.Windows.Forms.Panel panelLogin;
     }
 }
 

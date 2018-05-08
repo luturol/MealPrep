@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MealPrep.Dao
 {
-    public class BusinessLayer
+    public class ConnectionPostgres
     {
         private const String connstring = "Server={0};Port={1}; User Id={2};Password={3};Database={4};";
         private String server;
@@ -18,7 +18,7 @@ namespace MealPrep.Dao
         private String database;
 
 
-        public BusinessLayer(String server, String port, String user, String password, String database)
+        public ConnectionPostgres(String server, String port, String user, String password, String database)
         {
             this.server = server;
             this.port = port;
@@ -40,14 +40,31 @@ namespace MealPrep.Dao
             return ds.Tables[0];
         }
 
-        private NpgsqlConnection GetConnection()
+        public NpgsqlConnection GetConnection()
         {
             return new NpgsqlConnection(String.Format(connstring, server, port, user, password, database));
         }
 
-        private NpgsqlDataAdapter GetDataAdapter(String sql, NpgsqlConnection connection)
+        public NpgsqlDataAdapter GetDataAdapter(String sql, NpgsqlConnection connection)
         {
             return new NpgsqlDataAdapter(sql, connection);
+        }
+        
+        public void ExecuteSqlWithCursorReturn(String sql)
+        {
+            DataTable table = new DataTable();
+            NpgsqlConnection pgsqlConnection = GetConnection();
+            pgsqlConnection.Open();
+            NpgsqlTransaction tran = pgsqlConnection.BeginTransaction();
+            NpgsqlCommand command = new NpgsqlCommand(sql, pgsqlConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            NpgsqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                
+            }
+            tran.Commit();
+            pgsqlConnection.Close();
         }
     }
 }
