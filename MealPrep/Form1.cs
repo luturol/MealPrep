@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Dao;
+using MealPrep.Utiles;
 using MealPrep.View;
 using Npgsql;
 
@@ -18,8 +19,6 @@ namespace MealPrep
     {
         public Form1()
         {
-            //this.TopMost = true;
-            //this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             Initialize();
         }
@@ -28,8 +27,8 @@ namespace MealPrep
         {
             ConnectionPostgres conn = new ConnectionPostgres("127.0.0.1", "5432", "postgres", "a.123456", "mealprep");
             UserController userController = new UserController(new UserDao(conn));
-            panelAddUser.Controls.Add(new ucAddUser(userController));
-            panelLogin.Controls.Add(new ucLogin(userController));
+            this.Controls.Add(new ucLoginPage());
+            UsefulAlgorithms.AdjustFormSize(this);
         }        
     }
 }
