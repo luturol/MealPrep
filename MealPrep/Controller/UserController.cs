@@ -12,20 +12,45 @@ namespace MealPrep.Controller
     {        
         private UserDao dao;
         private const String ERROR_USER_ALREADY_EXIST = "Error! User already exists.";
+
         public UserController(UserDao dao)
         {
             this.dao = dao;
         }
         
-        public bool addUser(User user)
+        public bool AddUser(User user)
         {
-            if (!GetAllUsers().Exists(u => u.Name == user.Name && u.Password == user.Password))
+            if (!UserExists(user))
             {
                 return dao.addUser(user);
             }
             else
             {
                 throw new Exception(ERROR_USER_ALREADY_EXIST);
+            }
+        }
+
+        public bool UserExists(User user)
+        {
+            if (GetAllUsers().Exists(u => u.Name == user.Name))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool ValidateLogin(User user)
+        {
+            if(GetAllUsers().Exists(u => u.Name == user.Name && u.Password == user.Password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
