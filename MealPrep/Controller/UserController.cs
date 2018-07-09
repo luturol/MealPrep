@@ -22,7 +22,7 @@ namespace MealPrep.Controller
         {
             if (!UserExists(user))
             {
-                return dao.addUser(user);
+                return dao.AddUser(user);
             }
             else
             {

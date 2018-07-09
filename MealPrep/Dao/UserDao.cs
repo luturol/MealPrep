@@ -13,12 +13,13 @@ namespace MealPrep.Dao
         private ConnectionPostgres connection;
         private const String INSERT_INTO_USER_MEAL = "INSERT INTO USER_MEAL(USERNAME, USER_PASSWORD, DATE_ADD) VALUES (:username, :password, :date);";
         private const String SELECT_ALL_USERS = "SELECT * FROM USER_MEAL;";
+
         public UserDao(ConnectionPostgres connection)
         {
             this.connection = connection;
         }
 
-        public bool addUser(User user)
+        public bool AddUser(User user)
         {
             NpgsqlConnection con = connection.GetConnection();
             con.Open();
