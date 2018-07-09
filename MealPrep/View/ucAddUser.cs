@@ -16,6 +16,8 @@ namespace MealPrep.View
     {
         private UserController userController;
         private const String ERROR_NEED_TO_FULL_FILL_THE_FORM = "Error! Need to full fill the form.";
+        private const String CONTROL_TITLE = "New User";
+
         public ucAddUser(UserController userController)
         {
             this.userController = userController;
@@ -28,11 +30,11 @@ namespace MealPrep.View
             {
                 if(ValidateInputs())
                 {
-                    userController.addUser(new User(txtUsername.Text, txtPassword.Text));
+                    userController.AddUser(new User(txtUsername.Text, txtPassword.Text));
                 }
             }catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, CONTROL_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
         }
 

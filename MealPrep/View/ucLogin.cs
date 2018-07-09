@@ -16,6 +16,7 @@ namespace MealPrep.View
     {
         private UserController userController;
         private const String ERROR_NEED_TO_FULL_FILL_THE_FORM = "Error! Need to full fill the form.";
+        private const String CONTROL_TITLE = "Login";
         public ucLogin(UserController userController)
         {
             this.userController = userController;
@@ -28,12 +29,12 @@ namespace MealPrep.View
             {
                 if (ValidateControls())
                 {
-                    userController.UserExists(new User(txtUserName.Text, txtPassword.Text));
+                    login(new User(txtUserName.Text, txtPassword.Text));
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, CONTROL_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -45,8 +46,28 @@ namespace MealPrep.View
             }
             else
             {
+                throw new Exception(ERROR_NEED_TO_FULL_FILL_THE_FORM);
+            }
+        }
+
+        private void login(User user)
+        {
+            if(userController.ValidateLogin(user))
+            {
+                MessageBox.Show("Welcome to MealPrep!", CONTROL_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clearAllForms();
+            }
+            else
+            {
                 throw new Exception();
             }
+        }
+
+        private void clearAllForms()
+        {
+            Control parent = this.Parent;
+            Control grandfather = parent.Parent;
+            grandfather.Controls.Clear();
         }
     }
 }
