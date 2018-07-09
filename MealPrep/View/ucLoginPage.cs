@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MealPrep.Controller;
 
 namespace MealPrep.View
 {
     public partial class ucLoginPage : UserControl
     {
-        public ucLoginPage()
+        private UserController userController;
+
+        public ucLoginPage(UserController userController)
         {
+            this.userController = userController;
             InitializeComponent();
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            panelLogin.Controls.Add(new ucLogin(userController));
+            panelAddUser.Controls.Add(new ucAddUser(userController));
         }
     }
 }

@@ -31,7 +31,7 @@ namespace MealPrep.Controller
 
         public bool UserExists(User user)
         {
-            if (GetAllUsers().Exists(u => u.Name == user.Name && u.Password == user.Password))
+            if (GetAllUsers().Exists(u => u.Name == user.Name))
             {
                 return true;
             }

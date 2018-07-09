@@ -27,7 +27,7 @@ namespace MealPrep
         {
             ConnectionPostgres conn = new ConnectionPostgres("127.0.0.1", "5432", "postgres", "a.123456", "mealprep");
             UserController userController = new UserController(new UserDao(conn));
-            this.Controls.Add(new ucLoginPage());
+            this.Controls.Add(new ucLoginPage(userController));
             UsefulAlgorithms.AdjustFormSize(this);
         }        
     }
