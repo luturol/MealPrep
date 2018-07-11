@@ -8,22 +8,12 @@ namespace MealPrep.Model
 {
     public class Food
     {
-        public int FoodID { get; }
-        public double Amount { get; }
-        public string Name { get; }
-        public double Calories { get; }
-        public double Carbs { get; }
-        public double Fat { get; }
-        public double Protein { get; }
-
-        public Food(double amount, string name, double calories, double carbs, double fat, double protein)
-        {
-            this.Amount = amount;
-            this.Name = name;
-            this.Calories = calories;
-            this.Carbs = carbs;
-            this.Fat = fat;
-            this.Protein = protein;
-        }
+        public int FoodID { get; set; }
+        public double Amount { get; set; }
+        public string Name { get; set; }
+        public double Calories { get; set; }
+        public double Carbs { get; set; }
+        public double Fat { get; set; }
+        public double Protein { get; set; }        
     }
 }

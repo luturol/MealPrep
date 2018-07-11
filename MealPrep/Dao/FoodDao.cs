@@ -11,7 +11,9 @@ namespace MealPrep.Dao
     public class FoodDao
     {
         private ConnectionPostgres connectionPostgres;
-        private const string INSERT_INTO_FOOD = "insert into food(id, name, amount, calories, carbs, protein, fat) values(:id, :name, :amount, :calories, :carbs, :protein, :fat)";
+        private const string INSERT_INTO_FOOD = "insert into food(id, name, amount, calories, carbs, protein, fat) values(:id, :name, :amount, :calories, :carbs, :protein, :fat);";
+        private const string SELECT_ALL_FOODS = "select * from foods;";
+        private const string SELECT_NEXT_ID = "selext max(id) + 1 from food;";
 
         public FoodDao(ConnectionPostgres connectionPostgres)
         {
@@ -33,6 +35,41 @@ namespace MealPrep.Dao
             bool value = (command.ExecuteNonQuery() > 0);
             con.Close();
             return value;
+        }
+
+        public List<Food> GetAllFoods()
+        {
+            NpgsqlConnection con = connectionPostgres.GetConnection();
+            con.Open();
+            NpgsqlCommand command = new NpgsqlCommand(SELECT_ALL_FOODS, con);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            List<Food> listFood = new List<Food>();
+            while (dr.Read())
+            {
+                listFood.Add(new Food()
+                {
+                    FoodID = int.Parse(dr[0].ToString()),
+                    Name = dr[1].ToString(),
+                    Amount = double.Parse(dr[2].ToString()),
+                    Calories = double.Parse(dr[3].ToString()),
+                    Carbs = double.Parse(dr[4].ToString()),
+                    Protein = double.Parse(dr[5].ToString()),
+                    Fat = double.Parse(dr[6].ToString())
+                });
+
+            }
+            con.Close();
+            return listFood;
+        }
+
+        public int GetNextID()
+        {
+            NpgsqlConnection con = connectionPostgres.GetConnection();
+            con.Open();
+            NpgsqlCommand command = new NpgsqlCommand(SELECT_ALL_FOODS, con);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            con.Close();
+            return int.Parse(dr[0].ToString());                                    
         }
     }
 }
