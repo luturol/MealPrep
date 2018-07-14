@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using MealPrep.Controller;
 using System.Text.RegularExpressions;
 using MealPrep.Model;
-using MealPrep.Utiles;
+using MealPrep.Useful;
 
 namespace MealPrep.View
 {

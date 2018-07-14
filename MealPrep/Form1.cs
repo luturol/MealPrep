@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Dao;
-using MealPrep.Utiles;
+using MealPrep.Useful;
 using MealPrep.View;
 using Npgsql;
 

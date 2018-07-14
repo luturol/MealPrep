@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MealPrep.Utiles
+namespace MealPrep.Useful
 {
     public class UsefulAlgorithms
     {
