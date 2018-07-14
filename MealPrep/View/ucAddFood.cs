@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MealPrep.Controller;
 using System.Text.RegularExpressions;
 using MealPrep.Model;
+using MealPrep.Utiles;
 
 namespace MealPrep.View
 {
@@ -38,7 +39,7 @@ namespace MealPrep.View
 
         private bool ValidateControl()
         {
-            if (ValidateEmptyString(txtFoodName.Text) &&
+            if (UsefulAlgorithms.ValidateEmptyString(txtFoodName.Text) &&
                 ValidateNumbersAndEmptyString(txtAmount.Text) &&
                 ValidateNumbersAndEmptyString(txtCalories.Text) &&
                 ValidateNumbersAndEmptyString(txtCarbs.Text) &&
@@ -55,19 +56,8 @@ namespace MealPrep.View
 
         private bool ValidateNumbersAndEmptyString(string value)
         {
-            return ValidateEmptyString(value) && ValidateNumber(value);
-        }
-
-        private bool ValidateEmptyString(string value)
-        {
-            return (value == null || value.Length == 0) ? false : true;
-        }
-
-        private bool ValidateNumber(string value)
-        {
-            var regex = new Regex(@"^-*[0-9,\.]+$");
-            return regex.IsMatch(value);
-        }
+            return UsefulAlgorithms.ValidateEmptyString(value) && UsefulAlgorithms.ValidateNumber(value);
+        }        
 
         private void SaveFood()
         {

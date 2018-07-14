@@ -23,5 +23,16 @@ namespace MealPrep.Utiles
                 }
             }
         }
+
+        public static bool ValidateEmptyString(string value)
+        {
+            return (value == null || value.Length == 0) ? false : true;
+        }
+
+        public static bool ValidateNumber(string value)
+        {
+            var regex = new Regex(@"^-*[0-9,\.]+$");
+            return regex.IsMatch(value);
+        }
     }
 }
