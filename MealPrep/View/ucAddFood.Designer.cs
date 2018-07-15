@@ -42,6 +42,10 @@
             this.txtFat = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 83);
+            this.label2.Location = new System.Drawing.Point(13, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 1;
@@ -67,7 +71,7 @@
             // 
             // txtFoodName
             // 
-            this.txtFoodName.Location = new System.Drawing.Point(82, 80);
+            this.txtFoodName.Location = new System.Drawing.Point(57, 27);
             this.txtFoodName.Name = "txtFoodName";
             this.txtFoodName.Size = new System.Drawing.Size(270, 20);
             this.txtFoodName.TabIndex = 2;
@@ -75,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 122);
+            this.label3.Location = new System.Drawing.Point(5, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 3;
@@ -83,14 +87,14 @@
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(82, 119);
+            this.txtAmount.Location = new System.Drawing.Point(57, 66);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(88, 20);
             this.txtAmount.TabIndex = 4;
             // 
             // txtCalories
             // 
-            this.txtCalories.Location = new System.Drawing.Point(237, 119);
+            this.txtCalories.Location = new System.Drawing.Point(212, 66);
             this.txtCalories.Name = "txtCalories";
             this.txtCalories.Size = new System.Drawing.Size(88, 20);
             this.txtCalories.TabIndex = 6;
@@ -98,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(185, 122);
+            this.label4.Location = new System.Drawing.Point(160, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 5;
@@ -106,7 +110,7 @@
             // 
             // txtCarbs
             // 
-            this.txtCarbs.Location = new System.Drawing.Point(82, 145);
+            this.txtCarbs.Location = new System.Drawing.Point(57, 92);
             this.txtCarbs.Name = "txtCarbs";
             this.txtCarbs.Size = new System.Drawing.Size(88, 20);
             this.txtCarbs.TabIndex = 8;
@@ -114,7 +118,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 148);
+            this.label5.Location = new System.Drawing.Point(14, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 7;
@@ -122,7 +126,7 @@
             // 
             // txtProtein
             // 
-            this.txtProtein.Location = new System.Drawing.Point(237, 145);
+            this.txtProtein.Location = new System.Drawing.Point(212, 92);
             this.txtProtein.Name = "txtProtein";
             this.txtProtein.Size = new System.Drawing.Size(88, 20);
             this.txtProtein.TabIndex = 10;
@@ -130,7 +134,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(185, 148);
+            this.label6.Location = new System.Drawing.Point(164, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 9;
@@ -138,7 +142,7 @@
             // 
             // txtFat
             // 
-            this.txtFat.Location = new System.Drawing.Point(82, 171);
+            this.txtFat.Location = new System.Drawing.Point(57, 118);
             this.txtFat.Name = "txtFat";
             this.txtFat.Size = new System.Drawing.Size(88, 20);
             this.txtFat.TabIndex = 12;
@@ -146,7 +150,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(30, 174);
+            this.label7.Location = new System.Drawing.Point(26, 121);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(25, 13);
             this.label7.TabIndex = 11;
@@ -154,7 +158,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(153, 259);
+            this.btnSave.Location = new System.Drawing.Point(124, 415);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 13;
@@ -162,26 +166,48 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtCarbs);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtFat);
+            this.groupBox1.Controls.Add(this.txtFoodName);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtProtein);
+            this.groupBox1.Controls.Add(this.txtAmount);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtCalories);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(15, 71);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(366, 157);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(19, 259);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 15;
+            // 
             // ucAddFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtFat);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtProtein);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtCarbs);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtCalories);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtAmount);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtFoodName);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ucAddFood";
-            this.Size = new System.Drawing.Size(406, 377);
+            this.Size = new System.Drawing.Size(406, 485);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +229,7 @@
         private System.Windows.Forms.TextBox txtFat;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -2,6 +2,7 @@
 using MealPrep.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,27 @@ namespace MealPrep.Controller
             {
                 throw new Exception();
             }
+        }
+
+        public DataTable GetTableAllVitamins()
+        {
+            List<Vitamin> vitamins = GetAllVitamins();
+            DataTable vitaminTable = TableVitamin();
+            foreach (Vitamin vitamin in vitamins)
+            {
+                vitaminTable.Rows.Add(vitamin.VitaminID, vitamin.Name);
+            }
+
+            return vitaminTable;
+        }
+
+        private DataTable TableVitamin()
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ID");
+            table.Columns.Add("Name");
+
+            return table;
         }
     }
 }

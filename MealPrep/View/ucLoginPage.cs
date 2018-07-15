@@ -14,17 +14,19 @@ namespace MealPrep.View
     public partial class ucLoginPage : UserControl
     {
         private UserController userController;
+        private MealController mealController;
 
-        public ucLoginPage(UserController userController)
+        public ucLoginPage(UserController userController, MealController mealController)
         {
             this.userController = userController;
+            this.mealController = mealController;
             InitializeComponent();
             Initialize();
         }
 
         private void Initialize()
         {
-            panelLogin.Controls.Add(new ucLogin(userController));
+            panelLogin.Controls.Add(new ucLogin(userController, mealController));
             panelAddUser.Controls.Add(new ucAddUser(userController));
         }
     }

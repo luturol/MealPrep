@@ -17,12 +17,20 @@ namespace MealPrep.View
     public partial class ucAddFood : UserControl
     {
         private FoodController foodController;
+        private VitaminController vitaminController;
         private const string ERROR_NECESSARY_FULL_FILL_CORRECTLY = "It's necessary to full fill all fields correctly.";
 
-        public ucAddFood(FoodController foodController)
+        public ucAddFood(FoodController foodController, VitaminController vitaminController)
         {
             this.foodController = foodController;
+            this.vitaminController = vitaminController;
             InitializeComponent();
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            dataGridView1.DataSource = vitaminController.GetTableAllVitamins();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
