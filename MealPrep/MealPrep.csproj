@@ -54,10 +54,12 @@
     <Compile Include="Controller\FoodController.cs" />
     <Compile Include="Controller\MealController.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Controller\VitaminController.cs" />
     <Compile Include="Dao\ConnectionPostgres.cs" />
     <Compile Include="Dao\FoodDao.cs" />
     <Compile Include="Dao\MealDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
+    <Compile Include="Dao\VitaminDao.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,8 +67,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Food.cs" />
+    <Compile Include="Model\FoodVitamin.cs" />
     <Compile Include="Model\Meal.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Vitamin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Useful\UsefulAlgorithms.cs" />
@@ -100,6 +104,12 @@
     <Compile Include="View\ucLoginPage.Designer.cs">
       <DependentUpon>ucLoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ucAddVitamin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucAddVitamin.Designer.cs">
+      <DependentUpon>ucAddVitamin.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucAddUser.resx">
       <DependentUpon>ucAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucAddVitamin.resx">
+      <DependentUpon>ucAddVitamin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucHomePage.resx">
       <DependentUpon>ucHomePage.cs</DependentUpon>

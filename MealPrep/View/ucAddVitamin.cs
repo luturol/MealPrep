@@ -17,6 +17,8 @@ namespace MealPrep.View
     {
         private VitaminController controller;
         private Vitamin vitamin;
+        private const string MESSAGE_VITAMIN_ADD_WITH_SUCCESS = "Vitamin add with success.";
+        private const string TITLE = "New Vitamin";
 
         public ucAddVitamin(VitaminController controller)
         {
@@ -54,16 +56,16 @@ namespace MealPrep.View
             {
                 if (!UsefulAlgorithms.ValidateEmptyString(txtVitaminName.Text))
                 {
-                    if (controller.AddVitamin(new Vitamin() { Name = txtVitaminName.Text });)
-                {
-                        MessageBox.Show("Vitamin add with success.", "New Vitamin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (controller.AddVitamin(new Vitamin() { Name = txtVitaminName.Text }))
+                    {
+                        MessageBox.Show(MESSAGE_VITAMIN_ADD_WITH_SUCCESS, TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Vitamin add with success.", "New Vitamin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+                MessageBox.Show(ex.Message, TITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
