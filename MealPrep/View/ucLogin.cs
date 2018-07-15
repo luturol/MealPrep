@@ -16,12 +16,17 @@ namespace MealPrep.View
     {
         private UserController userController;
         private MealController mealController;
+        private FoodController foodController;
+        private VitaminController vitaminController;
         private const String ERROR_NEED_TO_FULL_FILL_THE_FORM = "Error! Need to full fill the form.";
         private const String CONTROL_TITLE = "Login";
-        public ucLogin(UserController userController, MealController mealController)
+        public ucLogin(UserController userController, MealController mealController,
+                       FoodController foodController, VitaminController vitaminController)
         {
             this.userController = userController;
             this.mealController = mealController;
+            this.foodController = foodController;
+            this.vitaminController = vitaminController;
             InitializeComponent();
         }
 
@@ -59,7 +64,7 @@ namespace MealPrep.View
                 MessageBox.Show("Welcome to MealPrep!", CONTROL_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Control parent = GetParentForm();
                 parent.Controls.Clear();
-                parent.Controls.Add(new ucHomePage(mealController, user));
+                parent.Controls.Add(new ucHomePage(mealController, foodController, vitaminController, user));
             }
             else
             {

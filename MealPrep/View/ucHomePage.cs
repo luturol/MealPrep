@@ -15,11 +15,15 @@ namespace MealPrep.View
     public partial class ucHomePage : UserControl
     {
         private MealController mealController;
+        private FoodController foodController;
+        private VitaminController vitaminController;
         private User user;
 
-        public ucHomePage(MealController mealController, User user)
+        public ucHomePage(MealController mealController, FoodController foodController, VitaminController vitaminController, User user)
         {
             this.mealController = mealController;
+            this.foodController = foodController;
+            this.vitaminController = vitaminController;
             this.user = user;
             InitializeComponent();
         }
