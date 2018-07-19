@@ -1,4 +1,5 @@
-﻿using MealPrep.Model;
+﻿using MealPrep.Interfaces;
+using MealPrep.Model;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MealPrep.Dao
 {
-    public class FoodDao
+    public class FoodDao : IFoodDao
     {
         private ConnectionPostgres connectionPostgres;
         private const string INSERT_INTO_FOOD = "insert into food(id, name, amount, calories, carbs, protein, fat) values(:id, :name, :amount, :calories, :carbs, :protein, :fat);";

@@ -1,4 +1,5 @@
 ﻿using MealPrep.Dao;
+using MealPrep.Interfaces;
 using MealPrep.Model;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MealPrep.Controller
 {
-    public class FoodController
+    public class FoodController : IFoodController
     {
         private FoodDao foodDao;
         private const string FOOD_ALREADY_EXIST = "Food already exist";        
@@ -16,7 +17,7 @@ namespace MealPrep.Controller
         public FoodController(FoodDao foodDao)
         {
             this.foodDao = foodDao;
-        }
+        }        
 
         public bool AddFood(Food food)
         {
