@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MealPrep.Interfaces
 {
-    interface IFoodDao
+    public interface IFoodDao
     {
         bool AddFood(Food food);
         List<Food> GetAllFoods();
