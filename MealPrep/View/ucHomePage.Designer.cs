@@ -30,6 +30,10 @@
         {
             this.panelMeals = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.foodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newFoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMeals
@@ -50,14 +54,42 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "MealPrep Home Page";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.foodToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(787, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // foodToolStripMenuItem
+            // 
+            this.foodToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newFoodToolStripMenuItem});
+            this.foodToolStripMenuItem.Name = "foodToolStripMenuItem";
+            this.foodToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.foodToolStripMenuItem.Text = "Food";
+            // 
+            // newFoodToolStripMenuItem
+            // 
+            this.newFoodToolStripMenuItem.Name = "newFoodToolStripMenuItem";
+            this.newFoodToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.newFoodToolStripMenuItem.Text = "New Food";
+            this.newFoodToolStripMenuItem.Click += new System.EventHandler(this.newFoodToolStripMenuItem_Click);
+            // 
             // ucHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelMeals);
+            this.Controls.Add(this.menuStrip1);
             this.Name = "ucHomePage";
             this.Size = new System.Drawing.Size(787, 541);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -67,5 +99,8 @@
 
         private System.Windows.Forms.Panel panelMeals;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem foodToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newFoodToolStripMenuItem;
     }
 }

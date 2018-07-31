@@ -71,11 +71,18 @@
     <Compile Include="Model\Food.cs" />
     <Compile Include="Model\FoodVitamin.cs" />
     <Compile Include="Model\Meal.cs" />
+    <Compile Include="Model\TitleFactory.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Vitamin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Useful\UsefulAlgorithms.cs" />
+    <Compile Include="View\frmAuxiliary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAuxiliary.Designer.cs">
+      <DependentUpon>frmAuxiliary.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ucAddFood.cs">
       <SubType>UserControl</SubType>
     </Compile>

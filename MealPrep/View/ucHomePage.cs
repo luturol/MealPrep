@@ -32,5 +32,10 @@ namespace MealPrep.View
         {
             List<Meal> meals = mealController.GetAllMeals(user);
         }
+
+        private void newFoodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
