@@ -77,11 +77,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Useful\UsefulAlgorithms.cs" />
-    <Compile Include="View\frmAuxiliary.cs">
+    <Compile Include="View\FormAuxiliary.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\frmAuxiliary.Designer.cs">
-      <DependentUpon>frmAuxiliary.cs</DependentUpon>
+    <Compile Include="View\FormAuxiliary.Designer.cs">
+      <DependentUpon>FormAuxiliary.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucAddFood.cs">
       <SubType>UserControl</SubType>
@@ -131,8 +131,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\frmAuxiliary.resx">
-      <DependentUpon>frmAuxiliary.cs</DependentUpon>
+    <EmbeddedResource Include="View\FormAuxiliary.resx">
+      <DependentUpon>FormAuxiliary.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucAddFood.resx">
       <DependentUpon>ucAddFood.cs</DependentUpon>
@@ -152,7 +153,9 @@
     <EmbeddedResource Include="View\ucLoginPage.resx">
       <DependentUpon>ucLoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

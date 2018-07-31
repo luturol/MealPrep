@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace MealPrep.View
 {
-    public partial class frmAuxiliary : Form
+    public partial class FormAuxiliary : Form
     {
         private UserControl userControl;
 
-        public frmAuxiliary(UserControl userControl)
+        public FormAuxiliary(UserControl userControl)
         {
             this.userControl = userControl;
             InitializeComponent();

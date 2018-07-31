@@ -1,6 +1,6 @@
 ﻿namespace MealPrep.View
 {
-    partial class frmAuxiliary
+    partial class FormAuxiliary
     {
         /// <summary>
         /// Required designer variable.
