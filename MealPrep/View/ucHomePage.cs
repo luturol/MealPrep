@@ -35,7 +35,8 @@ namespace MealPrep.View
 
         private void newFoodToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            frmAuxiliary addMeal = new frmAuxiliary(new ucAddFood(foodController, vitaminController));
+            addMeal.ShowDialog();
         }
     }
 }

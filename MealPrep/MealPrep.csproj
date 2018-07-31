@@ -131,6 +131,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\frmAuxiliary.resx">
+      <DependentUpon>frmAuxiliary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ucAddFood.resx">
       <DependentUpon>ucAddFood.cs</DependentUpon>
     </EmbeddedResource>

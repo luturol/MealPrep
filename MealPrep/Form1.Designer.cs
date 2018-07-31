@@ -37,6 +37,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(261, 325);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
 

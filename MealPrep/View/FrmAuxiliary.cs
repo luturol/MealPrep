@@ -1,4 +1,5 @@
-﻿using MealPrep.Useful;
+﻿using MealPrep.Model;
+using MealPrep.Useful;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace MealPrep.View
             InitializeComponent();
             this.Controls.Add(userControl);
             UsefulAlgorithms.AdjustFormSize(this);
-            this.Text = "";
+            this.Text = TitleFactory.GetTitle(userControl.GetType());
         }
     }
 }
