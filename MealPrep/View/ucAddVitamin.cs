@@ -17,8 +17,9 @@ namespace MealPrep.View
     {
         private VitaminController controller;
         private Vitamin vitamin;
-        private const string MESSAGE_VITAMIN_ADD_WITH_SUCCESS = "Vitamin add with success.";
-        private const string TITLE = "New Vitamin";
+        private const String MESSAGE_VITAMIN_ADD_WITH_SUCCESS = "Vitamin add with success.";
+        private const String ERROR_NECESSARY_TO_FULL_FILL_NAME = "Error! Necessary to fill the name field.";
+       
 
         public ucAddVitamin(VitaminController controller)
         {
@@ -34,7 +35,6 @@ namespace MealPrep.View
             InitializeComponent();
             Initialize();
         }
-
 
         private void Initialize()
         {
@@ -55,17 +55,21 @@ namespace MealPrep.View
         {
             try
             {
-                if (!UsefulAlgorithms.ValidateEmptyString(txtVitaminName.Text))
+                if (UsefulAlgorithms.ValidateEmptyString(txtVitaminName.Text))
                 {
                     if (controller.AddVitamin(new Vitamin() { Name = txtVitaminName.Text }))
                     {
-                        MessageBox.Show(MESSAGE_VITAMIN_ADD_WITH_SUCCESS, TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(MESSAGE_VITAMIN_ADD_WITH_SUCCESS, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                }
+                else
+                {
+                    throw new Exception(ERROR_NECESSARY_TO_FULL_FILL_NAME);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, TITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -26,19 +26,26 @@ namespace MealPrep.Controller
 
         public bool VitaminExist(Vitamin vitamin)
         {
-            return GetAllVitamins().Exists(v => v.VitaminID == vitamin.VitaminID || v.Name == vitamin.Name);
+            List<Vitamin> allVitamins = GetAllVitamins();
+            return allVitamins.Exists(v => v.Name == vitamin.Name) || (vitamin.VitaminID > 0 && allVitamins.Exists(v => v.VitaminID == vitamin.VitaminID || v.Name == vitamin.Name));
         }
 
         public bool AddVitamin(Vitamin vitamin)
         {
             if (!VitaminExist(vitamin))
             {
+                vitamin.VitaminID = vitamin.VitaminID > 0 ? vitamin.VitaminID : GetNextValidId();
                 return vitaminDao.AddVitamin(vitamin);
             }
             else
             {
-                throw new Exception();
+                throw new Exception(String.Format(ERRO_VITAMIN_ALREADY_EXIST, vitamin.VitaminID, vitamin.Name));
             }
+        }
+
+        private int GetNextValidId()
+        {
+            return GetAllVitamins().Max(v => v.VitaminID) + 1;
         }
 
         public DataTable GetTableAllVitamins()
