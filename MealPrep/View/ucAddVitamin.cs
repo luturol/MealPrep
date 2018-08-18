@@ -24,6 +24,7 @@ namespace MealPrep.View
         {
             this.controller = controller;
             InitializeComponent();
+            Initialize();
         }
 
         public ucAddVitamin(VitaminController controller, Vitamin vitamin)

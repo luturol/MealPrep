@@ -33,6 +33,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.foodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newFoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vitaminsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addVitaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +59,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.foodToolStripMenuItem});
+            this.foodToolStripMenuItem,
+            this.vitaminsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(787, 24);
@@ -78,6 +81,21 @@
             this.newFoodToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.newFoodToolStripMenuItem.Text = "New Food";
             this.newFoodToolStripMenuItem.Click += new System.EventHandler(this.newFoodToolStripMenuItem_Click);
+            // 
+            // vitaminsToolStripMenuItem
+            // 
+            this.vitaminsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addVitaminToolStripMenuItem});
+            this.vitaminsToolStripMenuItem.Name = "vitaminsToolStripMenuItem";
+            this.vitaminsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.vitaminsToolStripMenuItem.Text = "Vitamins";
+            // 
+            // addVitaminToolStripMenuItem
+            // 
+            this.addVitaminToolStripMenuItem.Name = "addVitaminToolStripMenuItem";
+            this.addVitaminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addVitaminToolStripMenuItem.Text = "Add Vitamin";
+            this.addVitaminToolStripMenuItem.Click += new System.EventHandler(this.addVitaminToolStripMenuItem_Click);
             // 
             // ucHomePage
             // 
@@ -102,5 +120,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem foodToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newFoodToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vitaminsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addVitaminToolStripMenuItem;
     }
 }
