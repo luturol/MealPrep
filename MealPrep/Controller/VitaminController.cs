@@ -60,7 +60,7 @@ namespace MealPrep.Controller
             return vitaminTable;
         }
 
-        private DataTable TableVitamin()
+        public DataTable TableVitamin()
         {
             DataTable table = new DataTable();
             table.Columns.Add("ID");

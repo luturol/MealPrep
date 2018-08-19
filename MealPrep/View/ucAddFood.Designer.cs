@@ -43,14 +43,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cbVitamins = new System.Windows.Forms.ComboBox();
+            this.btnAddVitamin = new System.Windows.Forms.Button();
+            this.gcVitamins = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcVitamins)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -194,20 +194,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Food Properties";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(342, 76);
-            this.dataGridView1.TabIndex = 15;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.cbVitamins);
+            this.groupBox2.Controls.Add(this.btnAddVitamin);
+            this.groupBox2.Controls.Add(this.gcVitamins);
             this.groupBox2.Location = new System.Drawing.Point(6, 144);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(354, 158);
@@ -215,31 +207,41 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vitamins";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(219, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(80, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 17;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(20, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 18;
-            this.label8.Text = "label8";
+            this.label8.Text = "Vitamins:";
+            // 
+            // cbVitamins
+            // 
+            this.cbVitamins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbVitamins.FormattingEnabled = true;
+            this.cbVitamins.Location = new System.Drawing.Point(80, 21);
+            this.cbVitamins.Name = "cbVitamins";
+            this.cbVitamins.Size = new System.Drawing.Size(121, 21);
+            this.cbVitamins.TabIndex = 17;
+            // 
+            // btnAddVitamin
+            // 
+            this.btnAddVitamin.Location = new System.Drawing.Point(219, 19);
+            this.btnAddVitamin.Name = "btnAddVitamin";
+            this.btnAddVitamin.Size = new System.Drawing.Size(75, 23);
+            this.btnAddVitamin.TabIndex = 16;
+            this.btnAddVitamin.Text = "Add Vitamin";
+            this.btnAddVitamin.UseVisualStyleBackColor = true;
+            this.btnAddVitamin.Click += new System.EventHandler(this.btnAddVitamin_Click);
+            // 
+            // gcVitamins
+            // 
+            this.gcVitamins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gcVitamins.Location = new System.Drawing.Point(6, 62);
+            this.gcVitamins.Name = "gcVitamins";
+            this.gcVitamins.Size = new System.Drawing.Size(342, 76);
+            this.gcVitamins.TabIndex = 15;
             // 
             // ucAddFood
             // 
@@ -251,9 +253,9 @@
             this.Size = new System.Drawing.Size(406, 444);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcVitamins)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,10 +278,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gcVitamins;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbVitamins;
+        private System.Windows.Forms.Button btnAddVitamin;
     }
 }
