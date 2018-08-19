@@ -49,6 +49,15 @@ namespace MealPrep.View
                 lblVitaminIDValue.Visible = false;
                 lblVitaminLabelText.Visible = false;
             }
+            PopulateGrid();
+        }
+
+        private void PopulateGrid()
+        {
+            if (!bwProcessVitamin.IsBusy)
+                bwProcessVitamin.RunWorkerAsync();
+
+            gcVitamins.ReadOnly = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -59,6 +68,7 @@ namespace MealPrep.View
                 {
                     if (controller.AddVitamin(new Vitamin() { Name = txtVitaminName.Text }))
                     {
+                        PopulateGrid();
                         MessageBox.Show(MESSAGE_VITAMIN_ADD_WITH_SUCCESS, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -72,5 +82,16 @@ namespace MealPrep.View
                 MessageBox.Show(ex.Message, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void bwProcessVitamin_DoWork(object sender, DoWorkEventArgs e)
+        {
+            FormAuxiliary progressBar = new FormAuxiliary(new ucProgressBar());
+            progressBar.Show();
+            Action action = () => gcVitamins.DataSource = controller.GetTableAllVitamins();
+            gcVitamins.Invoke(action);
+            progressBar.Close();
+        }
+
+
     }
 }

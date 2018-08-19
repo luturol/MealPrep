@@ -52,7 +52,7 @@ namespace MealPrep.Controller
         {
             List<Vitamin> vitamins = GetAllVitamins();
             DataTable vitaminTable = TableVitamin();
-            foreach (Vitamin vitamin in vitamins)
+            foreach (Vitamin vitamin in vitamins.OrderBy(v => v.Name))
             {
                 vitaminTable.Rows.Add(vitamin.VitaminID, vitamin.Name);
             }

@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\Aha-Soft-Desktop-Buffet-Salad.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Npgsql, Version=3.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.3.2.7\lib\net451\Npgsql.dll</HintPath>
@@ -82,6 +85,12 @@
     </Compile>
     <Compile Include="View\FormAuxiliary.Designer.cs">
       <DependentUpon>FormAuxiliary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucProgressBar.Designer.cs">
+      <DependentUpon>ucProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucAddFood.cs">
       <SubType>UserControl</SubType>
@@ -135,6 +144,9 @@
       <DependentUpon>FormAuxiliary.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ucProgressBar.resx">
+      <DependentUpon>ucProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ucAddFood.resx">
       <DependentUpon>ucAddFood.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +181,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\Aha-Soft-Desktop-Buffet-Salad.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
