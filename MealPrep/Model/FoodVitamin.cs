@@ -9,7 +9,7 @@ namespace MealPrep.Model
     public class FoodVitamin
     {
         public Food Food { get; set; }        
-        public Vitamin Vitamin;
+        public Vitamin Vitamin { get; set; }
         public double Amount { get; set; }
         public string Weigth { get; set; }
     }

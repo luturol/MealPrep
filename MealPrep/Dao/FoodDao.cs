@@ -36,7 +36,7 @@ namespace MealPrep.Dao
             bool value = (command.ExecuteNonQuery() > 0);
             con.Close();
             return value;
-        }
+        }        
 
         public List<Food> GetAllFoods()
         {

@@ -33,8 +33,6 @@
             this.txtFoodName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
-            this.txtCalories = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtCarbs = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtProtein = new System.Windows.Forms.TextBox();
@@ -44,10 +42,16 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbWeightVitamin = new System.Windows.Forms.ComboBox();
+            this.txtAmountVitamin = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbVitamins = new System.Windows.Forms.ComboBox();
             this.btnAddVitamin = new System.Windows.Forms.Button();
             this.gcVitamins = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCalories = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcVitamins)).BeginInit();
@@ -97,22 +101,6 @@
             this.txtAmount.Size = new System.Drawing.Size(88, 20);
             this.txtAmount.TabIndex = 4;
             // 
-            // txtCalories
-            // 
-            this.txtCalories.Location = new System.Drawing.Point(212, 66);
-            this.txtCalories.Name = "txtCalories";
-            this.txtCalories.Size = new System.Drawing.Size(88, 20);
-            this.txtCalories.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(160, 69);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Calories:";
-            // 
             // txtCarbs
             // 
             this.txtCarbs.Location = new System.Drawing.Point(57, 92);
@@ -131,7 +119,7 @@
             // 
             // txtProtein
             // 
-            this.txtProtein.Location = new System.Drawing.Point(212, 92);
+            this.txtProtein.Location = new System.Drawing.Point(213, 92);
             this.txtProtein.Name = "txtProtein";
             this.txtProtein.Size = new System.Drawing.Size(88, 20);
             this.txtProtein.TabIndex = 10;
@@ -139,7 +127,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(164, 95);
+            this.label6.Location = new System.Drawing.Point(165, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 9;
@@ -163,7 +151,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(132, 308);
+            this.btnSave.Location = new System.Drawing.Point(132, 357);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 13;
@@ -189,23 +177,61 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(15, 71);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(366, 337);
+            this.groupBox1.Size = new System.Drawing.Size(366, 386);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Food Properties";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.cbWeightVitamin);
+            this.groupBox2.Controls.Add(this.txtAmountVitamin);
+            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cbVitamins);
             this.groupBox2.Controls.Add(this.btnAddVitamin);
             this.groupBox2.Controls.Add(this.gcVitamins);
             this.groupBox2.Location = new System.Drawing.Point(6, 144);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(354, 158);
+            this.groupBox2.Size = new System.Drawing.Size(354, 194);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vitamins";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(207, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Weight:";
+            // 
+            // cbWeightVitamin
+            // 
+            this.cbWeightVitamin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWeightVitamin.FormattingEnabled = true;
+            this.cbWeightVitamin.Location = new System.Drawing.Point(257, 19);
+            this.cbWeightVitamin.Name = "cbWeightVitamin";
+            this.cbWeightVitamin.Size = new System.Drawing.Size(65, 21);
+            this.cbWeightVitamin.TabIndex = 21;
+            // 
+            // txtAmountVitamin
+            // 
+            this.txtAmountVitamin.Location = new System.Drawing.Point(80, 46);
+            this.txtAmountVitamin.Name = "txtAmountVitamin";
+            this.txtAmountVitamin.Size = new System.Drawing.Size(121, 20);
+            this.txtAmountVitamin.TabIndex = 20;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(23, 49);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Amount:";
             // 
             // label8
             // 
@@ -227,7 +253,7 @@
             // 
             // btnAddVitamin
             // 
-            this.btnAddVitamin.Location = new System.Drawing.Point(219, 19);
+            this.btnAddVitamin.Location = new System.Drawing.Point(210, 43);
             this.btnAddVitamin.Name = "btnAddVitamin";
             this.btnAddVitamin.Size = new System.Drawing.Size(75, 23);
             this.btnAddVitamin.TabIndex = 16;
@@ -238,10 +264,26 @@
             // gcVitamins
             // 
             this.gcVitamins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gcVitamins.Location = new System.Drawing.Point(6, 62);
+            this.gcVitamins.Location = new System.Drawing.Point(6, 72);
             this.gcVitamins.Name = "gcVitamins";
-            this.gcVitamins.Size = new System.Drawing.Size(342, 76);
+            this.gcVitamins.Size = new System.Drawing.Size(342, 116);
             this.gcVitamins.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(157, 69);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Calories*:";
+            // 
+            // txtCalories
+            // 
+            this.txtCalories.Location = new System.Drawing.Point(213, 66);
+            this.txtCalories.Name = "txtCalories";
+            this.txtCalories.Size = new System.Drawing.Size(88, 20);
+            this.txtCalories.TabIndex = 6;
             // 
             // ucAddFood
             // 
@@ -250,7 +292,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "ucAddFood";
-            this.Size = new System.Drawing.Size(406, 444);
+            this.Size = new System.Drawing.Size(406, 472);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -268,8 +310,6 @@
         private System.Windows.Forms.TextBox txtFoodName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAmount;
-        private System.Windows.Forms.TextBox txtCalories;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCarbs;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtProtein;
@@ -283,5 +323,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbVitamins;
         private System.Windows.Forms.Button btnAddVitamin;
+        private System.Windows.Forms.TextBox txtAmountVitamin;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbWeightVitamin;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCalories;
     }
 }
