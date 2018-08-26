@@ -114,10 +114,10 @@ namespace MealPrep.View
         }
 
         private void SaveFood()
-        {
+        {            
             if (ValidateControl())
             {
-                if (foodController.AddFood(new Food()
+                Food f = new Food()
                 {
                     FoodID = foodController.GetNextId(),
                     Name = txtFoodName.Text,
@@ -127,7 +127,8 @@ namespace MealPrep.View
                     Protein = double.Parse(txtProtein.Text),
                     Fat = double.Parse(txtFat.Text),
                     FoodVitamins = GetAllVitamins()
-                }))
+                };
+                if (foodController.AddFood(f) && foodController.AddFoodVitamin(f.FoodVitamins))
                 {
                     MessageBoxInformationType(MESSAGE_FODD_ADD_WITH_SUCCESS);
                 }

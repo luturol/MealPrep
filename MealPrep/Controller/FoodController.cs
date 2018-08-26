@@ -40,6 +40,11 @@ namespace MealPrep.Controller
         {
             return foodDao.GetNextID();
         }
+
+        public bool AddFoodVitamin(List<FoodVitamin> foodVitamins)
+        {
+            return foodDao.AddFoodVitamin(foodVitamins);
+        }
                         
     }
 }
