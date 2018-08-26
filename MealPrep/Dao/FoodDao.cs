@@ -14,8 +14,8 @@ namespace MealPrep.Dao
         private ConnectionPostgres connectionPostgres;
         private const string INSERT_INTO_FOOD = "insert into food(id, name, amount, calories, carbs, protein, fat) values(:id, :name, :amount, :calories, :carbs, :protein, :fat);";
         private const string SELECT_ALL_FOODS = "select * from food;";
-        private const string SELECT_NEXT_ID = "selext max(id) + 1 from food;";
-        private const String INSERT_INTO_FOOD_VITAMINS = "insert into food_vitamins(id_food, id_vitamins, amount, weight) values(:id_food, :id_vitamins, :amount, :weight);";
+        private const string SELECT_NEXT_ID = "select max(id) + 1 from food;";
+        private const String INSERT_INTO_FOOD_VITAMINS = "insert into food_vitamins(id_food, id_vitamin, amount, weight) values(:id_food, :id_vitamins, :amount, :weight);";
         private const String ERROR_ADDING_VITAMIN_TO_FOOD = "Error! Check if is valid add this new vitamin {0} to this food {1}";
 
         public FoodDao(ConnectionPostgres connectionPostgres)
@@ -98,7 +98,7 @@ namespace MealPrep.Dao
         {
             NpgsqlConnection con = connectionPostgres.GetConnection();
             con.Open();
-            NpgsqlCommand command = new NpgsqlCommand(SELECT_ALL_FOODS, con);
+            NpgsqlCommand command = new NpgsqlCommand(SELECT_NEXT_ID, con);
             NpgsqlDataReader dr = command.ExecuteReader();
             int nextValue = 1;
             if (dr.Read())

@@ -125,9 +125,9 @@ namespace MealPrep.View
                     Calories = double.Parse(txtCalories.Text),
                     Carbs = double.Parse(txtCarbs.Text),
                     Protein = double.Parse(txtProtein.Text),
-                    Fat = double.Parse(txtFat.Text),
-                    FoodVitamins = GetAllVitamins()
+                    Fat = double.Parse(txtFat.Text)                    
                 };
+                f.FoodVitamins = GetAllVitamins(f);
                 if (foodController.AddFood(f) && foodController.AddFoodVitamin(f.FoodVitamins))
                 {
                     MessageBoxInformationType(MESSAGE_FODD_ADD_WITH_SUCCESS);
@@ -135,10 +135,11 @@ namespace MealPrep.View
             }
         }
 
-        private List<FoodVitamin> GetAllVitamins()
+        private List<FoodVitamin> GetAllVitamins(Food food)
         {
             List<FoodVitamin> foodVitamins = new List<FoodVitamin>();
-            foreach (DataRow vitamin in gcVitamins.Rows)
+            DataTable tableVitamins = (DataTable) gcVitamins.DataSource;
+            foreach (DataRow vitamin in tableVitamins.Rows)
             {
                 foodVitamins.Add(new FoodVitamin
                 {
@@ -148,7 +149,8 @@ namespace MealPrep.View
                         Name = vitamin[COLUMN_FOOD_VITAMIN_NAME].ToString(),
                     },
                     Amount = double.Parse(vitamin[COLUMN_FOODVITAMIN_AMOUNT].ToString()),
-                    Weigth = vitamin[COLUMN_FOODVITAMIN_WEIGHT].ToString()
+                    Weigth = vitamin[COLUMN_FOODVITAMIN_WEIGHT].ToString(),
+                    Food = food
                 });
             }
             return foodVitamins;
