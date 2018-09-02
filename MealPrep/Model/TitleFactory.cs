@@ -10,8 +10,9 @@ namespace MealPrep.Model
     public class TitleFactory
     {
         private static readonly String TITLE_NEW_FOOD = "New Food";
+        private static readonly String TITLE_NEW_MEAL = "New Meal";
         private static readonly String TITLE_NEW_VITAMIN = "New Vitamin";
-        private static readonly String TITLE_PROGRESS_BAR = "Loading..";
+        private static readonly String TITLE_PROGRESS_BAR = "Loading..";        
         private static readonly String ERROR_TITLE_NOT_FOUND = "Title not found";        
         
         public static String GetTitle(Type type)
@@ -20,6 +21,10 @@ namespace MealPrep.Model
             {
                 return TITLE_NEW_FOOD;
             }
+            else if(type.Equals(typeof(ucAddMeal)))
+            {
+                return TITLE_NEW_MEAL;
+            }
             else if (type.Equals(typeof(ucAddVitamin)))
             {
                 return TITLE_NEW_VITAMIN;
@@ -27,7 +32,7 @@ namespace MealPrep.Model
             else if (type.Equals(typeof(ucProgressBar)))
             {
                 return TITLE_PROGRESS_BAR;
-            }
+            }            
             else
             {
                 throw new Exception(ERROR_TITLE_NOT_FOUND);

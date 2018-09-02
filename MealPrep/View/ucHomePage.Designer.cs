@@ -35,6 +35,8 @@
             this.newFoodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vitaminsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addVitaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addMealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +62,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.foodToolStripMenuItem,
-            this.vitaminsToolStripMenuItem});
+            this.vitaminsToolStripMenuItem,
+            this.mealToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(787, 24);
@@ -78,7 +81,7 @@
             // newFoodToolStripMenuItem
             // 
             this.newFoodToolStripMenuItem.Name = "newFoodToolStripMenuItem";
-            this.newFoodToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.newFoodToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newFoodToolStripMenuItem.Text = "New Food";
             this.newFoodToolStripMenuItem.Click += new System.EventHandler(this.newFoodToolStripMenuItem_Click);
             // 
@@ -96,6 +99,21 @@
             this.addVitaminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addVitaminToolStripMenuItem.Text = "Add Vitamin";
             this.addVitaminToolStripMenuItem.Click += new System.EventHandler(this.addVitaminToolStripMenuItem_Click);
+            // 
+            // mealToolStripMenuItem
+            // 
+            this.mealToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMealToolStripMenuItem});
+            this.mealToolStripMenuItem.Name = "mealToolStripMenuItem";
+            this.mealToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.mealToolStripMenuItem.Text = "Meal";
+            // 
+            // addMealToolStripMenuItem
+            // 
+            this.addMealToolStripMenuItem.Name = "addMealToolStripMenuItem";
+            this.addMealToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addMealToolStripMenuItem.Text = "Add Meal";
+            this.addMealToolStripMenuItem.Click += new System.EventHandler(this.addMealToolStripMenuItem_Click);
             // 
             // ucHomePage
             // 
@@ -122,5 +140,7 @@
         private System.Windows.Forms.ToolStripMenuItem newFoodToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vitaminsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addVitaminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mealToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addMealToolStripMenuItem;
     }
 }

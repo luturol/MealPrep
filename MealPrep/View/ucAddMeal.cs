@@ -66,14 +66,26 @@ namespace MealPrep.View
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            if (ValidateFood())
+            try
             {
-                throw new Exception(ERROR_NECESSARY_TO_SELECT_A_FOOD);
+                if (!ValidateFood())
+                {
+                    throw new Exception(ERROR_NECESSARY_TO_SELECT_A_FOOD);
+                }
+                else
+                {
+                    AddFoodMeal();
+                }
             }
-            else
+            catch(Exception ex)
             {
-                AddFoodMeal();
-            }
+                MessageBoxErrorType(ex.Message);
+            }            
+        }
+
+        private void MessageBoxErrorType(String error)
+        {
+            MessageBox.Show(error, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void AddFoodMeal()

@@ -44,5 +44,11 @@ namespace MealPrep.View
             FormAuxiliary addVitamin = new FormAuxiliary(new ucAddVitamin(vitaminController));
             addVitamin.ShowDialog();
         }
+
+        private void addMealToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAuxiliary addMeal = new FormAuxiliary(new ucAddMeal(foodController, mealController));
+            addMeal.ShowDialog();
+        }
     }
 }
