@@ -47,7 +47,7 @@ namespace MealPrep.View
 
         private void addMealToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAuxiliary addMeal = new FormAuxiliary(new ucAddMeal(foodController, mealController));
+            FormAuxiliary addMeal = new FormAuxiliary(new ucAddMeal(foodController, mealController, user));
             addMeal.ShowDialog();
         }
     }

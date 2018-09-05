@@ -16,6 +16,7 @@ namespace MealPrep.View
     {
         private FoodController foodController;
         private MealController mealController;
+        private User user;
         private const String ERROR_NECESSARY_TO_SELECT_A_FOOD = "Error! It's necessary to select a food.";
         private const String ERROR_FOOD_ALREADY_EXIST_IN_MEAL = "Error! Food already exist in this meal.";
         private const String ERRO_NECESSARY_TO_FILL_AMOUNT_OF_FOOD = "Error! It's necessary to fill amount of food";
@@ -26,10 +27,11 @@ namespace MealPrep.View
         private const String COLUMN_FOOD_AMOUNT = "AMOUNT";
         private const String COLUMN_FOOD_WEIGHT = "WEIGHT";
 
-        public ucAddMeal(FoodController foodController, MealController mealController)
+        public ucAddMeal(FoodController foodController, MealController mealController, User user)
         {
             this.foodController = foodController;
             this.mealController = mealController;
+            this.user = user;
             InitializeComponent();
             Initialize();
         }
@@ -52,7 +54,7 @@ namespace MealPrep.View
 
             cbWeightFood.Items.Add(Weigth.WEIGHT_G);
         }
-        
+
         private DataTable TableFoodVitamin()
         {
             DataTable table = foodController.TableFood();
@@ -77,10 +79,10 @@ namespace MealPrep.View
                     AddFoodMeal();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBoxErrorType(ex.Message);
-            }            
+            }
         }
 
         private void MessageBoxErrorType(String error)
@@ -125,5 +127,68 @@ namespace MealPrep.View
                 return true;
             }
         }
+
+        private void btnSaveMeal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ValidateController())
+                {
+                    Meal meal = new Meal()
+                    {
+                        MealDate = dateTimePicker1.Value,
+                        MealID = mealController.GetNextId(),
+                        User = user
+                    };
+                    meal.MealFoods = GetAllFoods(meal.MealID);
+                    mealController.AddMeal(meal, user);
+                    mealController.AddMealFood(meal.MealFoods);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBoxErrorType(ex.Message);
+            }
+        }
+
+        private bool ValidateController()
+        {
+            if (dateTimePicker1.Text.Length == 0)
+            {
+                throw new Exception("Error! Necessary to pick a date for the meal.");
+            }
+            else if (!ValidateGrid())
+            {
+                throw new Exception("Error! Need to add a food to the meal.");
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool ValidateGrid()
+        {
+            DataTable meal = (DataTable)gcVitamins.DataSource;
+            return meal.Rows.Count > 0;
+        }
+
+        private List<MealFood> GetAllFoods(int mealId)
+        {
+            List<MealFood> mealFoods = new List<MealFood>();
+            DataTable tableFoods = (DataTable)gcVitamins.DataSource;
+            foreach (DataRow food in tableFoods.Rows)
+            {
+                mealFoods.Add(new MealFood
+                {
+                    FoodID = int.Parse(food[COLUMN_FOOD_ID].ToString()),
+                    MealID = mealId,
+                    Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
+                    Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
+                });
+            }
+            return mealFoods;
+        }
+
     }
 }

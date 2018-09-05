@@ -170,6 +170,7 @@
             this.btnSaveMeal.TabIndex = 20;
             this.btnSaveMeal.Text = "Save Meal";
             this.btnSaveMeal.UseVisualStyleBackColor = true;
+            this.btnSaveMeal.Click += new System.EventHandler(this.btnSaveMeal_Click);
             // 
             // ucAddMeal
             // 
