@@ -37,14 +37,18 @@
             this.addVitaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelMeals.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMeals
             // 
+            this.panelMeals.AutoScroll = true;
+            this.panelMeals.Controls.Add(this.flowLayoutPanel1);
             this.panelMeals.Location = new System.Drawing.Point(35, 93);
             this.panelMeals.Name = "panelMeals";
-            this.panelMeals.Size = new System.Drawing.Size(714, 417);
+            this.panelMeals.Size = new System.Drawing.Size(718, 417);
             this.panelMeals.TabIndex = 0;
             // 
             // label1
@@ -81,7 +85,7 @@
             // newFoodToolStripMenuItem
             // 
             this.newFoodToolStripMenuItem.Name = "newFoodToolStripMenuItem";
-            this.newFoodToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newFoodToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.newFoodToolStripMenuItem.Text = "New Food";
             this.newFoodToolStripMenuItem.Click += new System.EventHandler(this.newFoodToolStripMenuItem_Click);
             // 
@@ -96,7 +100,7 @@
             // addVitaminToolStripMenuItem
             // 
             this.addVitaminToolStripMenuItem.Name = "addVitaminToolStripMenuItem";
-            this.addVitaminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addVitaminToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.addVitaminToolStripMenuItem.Text = "Add Vitamin";
             this.addVitaminToolStripMenuItem.Click += new System.EventHandler(this.addVitaminToolStripMenuItem_Click);
             // 
@@ -111,9 +115,17 @@
             // addMealToolStripMenuItem
             // 
             this.addMealToolStripMenuItem.Name = "addMealToolStripMenuItem";
-            this.addMealToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addMealToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.addMealToolStripMenuItem.Text = "Add Meal";
             this.addMealToolStripMenuItem.Click += new System.EventHandler(this.addMealToolStripMenuItem_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(687, 411);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // ucHomePage
             // 
@@ -124,6 +136,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "ucHomePage";
             this.Size = new System.Drawing.Size(787, 541);
+            this.panelMeals.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -142,5 +155,6 @@
         private System.Windows.Forms.ToolStripMenuItem addVitaminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mealToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMealToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

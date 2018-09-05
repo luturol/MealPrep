@@ -136,6 +136,12 @@
     <Compile Include="View\ucAddVitamin.Designer.cs">
       <DependentUpon>ucAddVitamin.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ucRowMeal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucRowMeal.Designer.cs">
+      <DependentUpon>ucRowMeal.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucLoginPage.resx">
       <DependentUpon>ucLoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucRowMeal.resx">
+      <DependentUpon>ucRowMeal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
