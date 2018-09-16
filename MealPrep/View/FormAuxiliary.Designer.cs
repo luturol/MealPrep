@@ -1,6 +1,6 @@
-﻿namespace MealPrep
+﻿namespace MealPrep.View
 {
-    partial class Form1
+    partial class FormAuxiliary
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.SuspendLayout();
             // 
-            // Form1
+            // frmAuxiliary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(261, 325);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "frmAuxiliary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "FrmAuxiliary";
             this.ResumeLayout(false);
 
         }
@@ -48,4 +45,3 @@
         #endregion
     }
 }
-

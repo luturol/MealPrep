@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MealPrep.Utiles
+namespace MealPrep.Useful
 {
     public class UsefulAlgorithms
     {
@@ -22,6 +23,17 @@ namespace MealPrep.Utiles
                     form.MaximumSize = new System.Drawing.Size(form.Width, form.Height);
                 }
             }
+        }
+
+        public static bool ValidateEmptyString(string value)
+        {
+            return (value == null || value.Length == 0) ? false : true;
+        }
+
+        public static bool ValidateNumber(string value)
+        {
+            var regex = new Regex(@"^-*[0-9,\.]+$");
+            return regex.IsMatch(value);
         }
     }
 }
