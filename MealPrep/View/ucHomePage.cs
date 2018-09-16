@@ -26,11 +26,16 @@ namespace MealPrep.View
             this.vitaminController = vitaminController;
             this.user = user;
             InitializeComponent();
+            Initialize();
         }
 
         private void Initialize()
         {
-            List<Meal> meals = mealController.GetAllMeals(user);
+            List<FullMeal> meals = mealController.GetMealWithFoods(user);
+            foreach(FullMeal meal in meals)
+            {
+                panelMeal.Controls.Add(new ucRowMeal(meal.MealId, meal.Date.ToShortDateString(), meal.Calories.ToString(), meal.Carbs.ToString(), meal.Protein.ToString(), meal.Fat.ToString()));
+            }
         }
 
         private void newFoodToolStripMenuItem_Click(object sender, EventArgs e)

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMeals = new System.Windows.Forms.Panel();
+            this.panelScroll = new System.Windows.Forms.Panel();
+            this.panelMeal = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.foodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,19 +38,26 @@
             this.addVitaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelMeals.SuspendLayout();
+            this.panelScroll.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panelMeals
+            // panelScroll
             // 
-            this.panelMeals.AutoScroll = true;
-            this.panelMeals.Controls.Add(this.flowLayoutPanel1);
-            this.panelMeals.Location = new System.Drawing.Point(35, 93);
-            this.panelMeals.Name = "panelMeals";
-            this.panelMeals.Size = new System.Drawing.Size(718, 417);
-            this.panelMeals.TabIndex = 0;
+            this.panelScroll.AutoScroll = true;
+            this.panelScroll.Controls.Add(this.panelMeal);
+            this.panelScroll.Location = new System.Drawing.Point(35, 93);
+            this.panelScroll.Name = "panelScroll";
+            this.panelScroll.Size = new System.Drawing.Size(718, 417);
+            this.panelScroll.TabIndex = 0;
+            // 
+            // panelMeal
+            // 
+            this.panelMeal.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.panelMeal.Location = new System.Drawing.Point(3, 3);
+            this.panelMeal.Name = "panelMeal";
+            this.panelMeal.Size = new System.Drawing.Size(687, 411);
+            this.panelMeal.TabIndex = 0;
             // 
             // label1
             // 
@@ -119,24 +127,16 @@
             this.addMealToolStripMenuItem.Text = "Add Meal";
             this.addMealToolStripMenuItem.Click += new System.EventHandler(this.addMealToolStripMenuItem_Click);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(687, 411);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
             // ucHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelMeals);
+            this.Controls.Add(this.panelScroll);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ucHomePage";
             this.Size = new System.Drawing.Size(787, 541);
-            this.panelMeals.ResumeLayout(false);
+            this.panelScroll.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -146,7 +146,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panelMeals;
+        private System.Windows.Forms.Panel panelScroll;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem foodToolStripMenuItem;
@@ -155,6 +155,6 @@
         private System.Windows.Forms.ToolStripMenuItem addVitaminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mealToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMealToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel panelMeal;
     }
 }

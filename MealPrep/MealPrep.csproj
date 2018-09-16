@@ -73,6 +73,7 @@
     <Compile Include="Interfaces\IFoodDao.cs" />
     <Compile Include="Model\Food.cs" />
     <Compile Include="Model\FoodVitamin.cs" />
+    <Compile Include="Model\FullMeal.cs" />
     <Compile Include="Model\Meal.cs" />
     <Compile Include="Model\MealFood.cs" />
     <Compile Include="Model\TitleFactory.cs" />
