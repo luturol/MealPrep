@@ -34,7 +34,7 @@ namespace MealPrep.Dao
             List<Meal> listMeal = new List<Meal>();
             while (dr.Read())
             {
-                listMeal.Add(new Meal() { MealID = int.Parse(dr[0].ToString()) });
+                listMeal.Add(new Meal() { MealID = int.Parse(dr[0].ToString()), MealDate = DateTime.Parse(dr[2].ToString()) });
             }
             con.Close();
             return listMeal;

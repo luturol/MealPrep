@@ -31,7 +31,7 @@ namespace MealPrep.View
 
         private void Initialize()
         {
-            List<FullMeal> meals = mealController.GetMealWithFoods(user);
+            List<FullMeal> meals = mealController.GetMealWithFoods(user).OrderByDescending(a => a.Date).ToList();
             foreach(FullMeal meal in meals)
             {
                 panelMeal.Controls.Add(new ucRowMeal(meal.MealId, meal.Date.ToShortDateString(), meal.Calories.ToString(), meal.Carbs.ToString(), meal.Protein.ToString(), meal.Fat.ToString()));

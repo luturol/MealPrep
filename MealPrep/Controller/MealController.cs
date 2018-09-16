@@ -78,7 +78,8 @@ namespace MealPrep.Controller
                     Carbs = carbs,
                     Fat = fat,
                     Protein = protein,
-                    Weigth = "g"
+                    Weigth = "g",
+                    Date = m.MealDate
                 });
             }
             return fullMeals;
