@@ -42,6 +42,18 @@ namespace MealPrep.Dao
 
         public bool AddMeal(Meal meal, User user)
         {
+            if(SaveMeal(meal, user))
+            {
+                return true && AddMealFood(meal.MealFoods);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool SaveMeal(Meal meal, User user)
+        {
             NpgsqlConnection con = connectionPostgres.GetConnection();
             con.Open();
             NpgsqlCommand command = new NpgsqlCommand(INSERT_INTO_MEAL, con);

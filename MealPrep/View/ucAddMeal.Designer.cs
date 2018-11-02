@@ -37,12 +37,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.btnAddFood = new System.Windows.Forms.Button();
-            this.gcVitamins = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSaveMeal = new System.Windows.Forms.Button();
+            this.gcFoods = new System.Windows.Forms.DataGridView();
             this.gpFood.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcVitamins)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFoods)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +59,7 @@
             // 
             // gpFood
             // 
+            this.gpFood.Controls.Add(this.gcFoods);
             this.gpFood.Controls.Add(this.label10);
             this.gpFood.Controls.Add(this.cbWeightFood);
             this.gpFood.Controls.Add(this.txtAmount);
@@ -66,7 +67,6 @@
             this.gpFood.Controls.Add(this.label8);
             this.gpFood.Controls.Add(this.cbFood);
             this.gpFood.Controls.Add(this.btnAddFood);
-            this.gpFood.Controls.Add(this.gcVitamins);
             this.gpFood.Location = new System.Drawing.Point(3, 89);
             this.gpFood.Name = "gpFood";
             this.gpFood.Size = new System.Drawing.Size(414, 194);
@@ -136,14 +136,6 @@
             this.btnAddFood.UseVisualStyleBackColor = true;
             this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
-            // gcVitamins
-            // 
-            this.gcVitamins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gcVitamins.Location = new System.Drawing.Point(6, 72);
-            this.gcVitamins.Name = "gcVitamins";
-            this.gcVitamins.Size = new System.Drawing.Size(402, 116);
-            this.gcVitamins.TabIndex = 15;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
@@ -172,6 +164,14 @@
             this.btnSaveMeal.UseVisualStyleBackColor = true;
             this.btnSaveMeal.Click += new System.EventHandler(this.btnSaveMeal_Click);
             // 
+            // gcFoods
+            // 
+            this.gcFoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gcFoods.Location = new System.Drawing.Point(6, 78);
+            this.gcFoods.Name = "gcFoods";
+            this.gcFoods.Size = new System.Drawing.Size(402, 116);
+            this.gcFoods.TabIndex = 23;
+            // 
             // ucAddMeal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,7 +185,7 @@
             this.Size = new System.Drawing.Size(420, 338);
             this.gpFood.ResumeLayout(false);
             this.gpFood.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcVitamins)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFoods)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,9 +202,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbFood;
         private System.Windows.Forms.Button btnAddFood;
-        private System.Windows.Forms.DataGridView gcVitamins;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSaveMeal;
+        private System.Windows.Forms.DataGridView gcFoods;
     }
 }
