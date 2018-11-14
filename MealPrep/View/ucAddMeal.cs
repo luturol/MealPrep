@@ -184,8 +184,8 @@ namespace MealPrep.View
             {
                 mealFoods.Add(new MealFood
                 {
-                    FoodID = int.Parse(food[COLUMN_FOOD_ID].ToString()),
-                    MealID = mealId,
+                    Food = foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())),
+                    Meal = mealController.GetAllMeals(user).Single(m => m.MealID == mealId),
                     Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
                     Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
                 });
