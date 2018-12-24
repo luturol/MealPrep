@@ -1,5 +1,6 @@
 ﻿using MealPrep.Dao;
 using MealPrep.Model;
+using MealPrep.Useful;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,10 +62,10 @@ namespace MealPrep.Controller
                 double fat = 0;
                 foreach (var f in m.MealFoods)
                 {
-                    calories += By3Rule(amount, f.Food.Calories, f.Amount);
-                    carbs += By3Rule(amount, f.Food.Carbs, f.Amount);
-                    protein += By3Rule(amount, f.Food.Protein, f.Amount);
-                    fat += By3Rule(amount, f.Food.Fat, f.Amount);
+                    calories += UsefulAlgorithms.By3Rule(amount, f.Food.Calories, f.Amount);
+                    carbs += UsefulAlgorithms.By3Rule(amount, f.Food.Carbs, f.Amount);
+                    protein += UsefulAlgorithms.By3Rule(amount, f.Food.Protein, f.Amount);
+                    fat += UsefulAlgorithms.By3Rule(amount, f.Food.Fat, f.Amount);
                 }
                 fullMeals.Add(new FullMeal()
                 {
@@ -82,11 +83,5 @@ namespace MealPrep.Controller
             return fullMeals;
         }
 
-        private double By3Rule(double value1, double value2, double value3)
-        {
-            // x - value1
-            // value2 = value3
-            return (value1 * value2) / value3;
-        }
     }
 }
