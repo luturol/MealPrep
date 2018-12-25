@@ -35,5 +35,12 @@ namespace MealPrep.Useful
             var regex = new Regex(@"^-*[0-9,\.]+$");
             return regex.IsMatch(value);
         }
+
+        public static double By3Rule(double value1, double value2, double value3)
+        {
+            // x - value1
+            // value2 = value3
+            return (value1 * value2) / value3;
+        }
     }
 }

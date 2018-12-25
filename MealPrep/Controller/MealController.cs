@@ -1,5 +1,6 @@
 ﻿using MealPrep.Dao;
 using MealPrep.Model;
+using MealPrep.Useful;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,28 +52,25 @@ namespace MealPrep.Controller
         {
             List<FullMeal> fullMeals = new List<FullMeal>();
             List<Meal> meals = GetAllMeals(user);
-            List<MealFood> mealFoods = mealDao.GetMealFoods();
-            var mealFoodFromUser = mealFoods.Join(meals, mealFood => mealFood.MealID, meal => meal.MealID, (mealFood, meal) => new { mealFood, meal }).ToList();
-            var foods = foodController.GetAllFoods().Join(mealFoodFromUser, food => food.FoodID, meal => meal.mealFood.FoodID, (food, meal) => new { Meal = meal, Food = food });
+            
             foreach (Meal m in meals)
-            {
-                var food = foods.Where(f => f.Meal.meal.MealID == m.MealID).ToList();                
-                var amount = food.Sum(a => a.Meal.mealFood.Amount);
+            {                 
+                var amount = m.MealFoods.Sum(a => a.Amount);
                 double calories = 0;
                 double carbs = 0;
                 double protein = 0;
                 double fat = 0;
-                foreach (var f in food)
+                foreach (var f in m.MealFoods)
                 {
-                    calories += By3Rule(amount, f.Food.Calories, f.Meal.mealFood.Amount);
-                    carbs += By3Rule(amount, f.Food.Carbs, f.Meal.mealFood.Amount);
-                    protein += By3Rule(amount, f.Food.Protein, f.Meal.mealFood.Amount);
-                    fat += By3Rule(amount, f.Food.Fat, f.Meal.mealFood.Amount);
+                    calories += UsefulAlgorithms.By3Rule(amount, f.Food.Calories, f.Amount);
+                    carbs += UsefulAlgorithms.By3Rule(amount, f.Food.Carbs, f.Amount);
+                    protein += UsefulAlgorithms.By3Rule(amount, f.Food.Protein, f.Amount);
+                    fat += UsefulAlgorithms.By3Rule(amount, f.Food.Fat, f.Amount);
                 }
                 fullMeals.Add(new FullMeal()
                 {
                     Amount = amount,
-                    Foods = food.Select(f => f.Food).ToList(),
+                    Foods = m.MealFoods.Select(f => f.Food).ToList(),
                     MealId = m.MealID,
                     Calories = calories,
                     Carbs = carbs,
@@ -85,11 +83,5 @@ namespace MealPrep.Controller
             return fullMeals;
         }
 
-        private double By3Rule(double value1, double value2, double value3)
-        {
-            // x - value1
-            // value2 = value3
-            return (value1 * value2) / value3;
-        }
     }
 }

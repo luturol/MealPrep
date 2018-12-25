@@ -17,6 +17,7 @@ namespace MealPrep.View
         private FoodController foodController;
         private MealController mealController;
         private User user;
+        private const String MESSAGE_MEAL_ADD_WITH_SUCCESS = "Meal add with success!";
         private const String ERROR_NECESSARY_TO_SELECT_A_FOOD = "Error! It's necessary to select a food.";
         private const String ERROR_FOOD_ALREADY_EXIST_IN_MEAL = "Error! Food already exist in this meal.";
         private const String ERRO_NECESSARY_TO_FILL_AMOUNT_OF_FOOD = "Error! It's necessary to fill amount of food";
@@ -39,9 +40,9 @@ namespace MealPrep.View
         private void Initialize()
         {
             InitializeComboBox();
-            gcVitamins.DataSource = TableFoodVitamin();
-            gcVitamins.ReadOnly = true;
-            gcVitamins.AllowUserToAddRows = false;
+            gcFoods.DataSource = TableFoodVitamin();
+            gcFoods.ReadOnly = true;
+            gcFoods.AllowUserToAddRows = false;
         }
 
         private void InitializeComboBox()
@@ -93,7 +94,7 @@ namespace MealPrep.View
         private void AddFoodMeal()
         {
             string[] food = cbFood.Text.Split('-');
-            DataTable tableFood = (DataTable)gcVitamins.DataSource;
+            DataTable tableFood = (DataTable)gcFoods.DataSource;
             if (tableFood.Select(COLUMN_FOOD_ID + "=" + food[0].Trim()).Count() > 0)
             {
                 throw new Exception(ERROR_FOOD_ALREADY_EXIST_IN_MEAL);
@@ -141,8 +142,10 @@ namespace MealPrep.View
                         User = user
                     };
                     meal.MealFoods = GetAllFoods(meal.MealID);
-                    mealController.AddMeal(meal, user);
-                    mealController.AddMealFood(meal.MealFoods);
+                    if(mealController.AddMeal(meal, user))
+                    {
+                        MessageBox.Show(MESSAGE_MEAL_ADD_WITH_SUCCESS, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch(Exception ex)
@@ -169,20 +172,20 @@ namespace MealPrep.View
 
         private bool ValidateGrid()
         {
-            DataTable meal = (DataTable)gcVitamins.DataSource;
+            DataTable meal = (DataTable)gcFoods.DataSource;
             return meal.Rows.Count > 0;
         }
 
         private List<MealFood> GetAllFoods(int mealId)
         {
             List<MealFood> mealFoods = new List<MealFood>();
-            DataTable tableFoods = (DataTable)gcVitamins.DataSource;
+            DataTable tableFoods = (DataTable)gcFoods.DataSource;
             foreach (DataRow food in tableFoods.Rows)
             {
                 mealFoods.Add(new MealFood
                 {
-                    FoodID = int.Parse(food[COLUMN_FOOD_ID].ToString()),
-                    MealID = mealId,
+                    Food = foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())),
+                    Meal = mealController.GetAllMeals(user).Single(m => m.MealID == mealId),
                     Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
                     Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
                 });
