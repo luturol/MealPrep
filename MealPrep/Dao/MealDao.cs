@@ -46,7 +46,7 @@ namespace MealPrep.Dao
         {
             if(SaveMeal(meal, user))
             {
-                return true && AddMealFood(meal.MealFoods);
+                return true && AddMealFood(meal.MealFoods, meal);
             }
             else
             {
@@ -83,12 +83,12 @@ namespace MealPrep.Dao
             return nextValue;
         }
 
-        public bool AddMealFood(List<MealFood> mealFoods)
+        public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
         {
             bool resultado = false;
             foreach (MealFood mealFood in mealFoods)
             {
-                resultado = SaveNewMealFood(mealFood);
+                resultado = SaveNewMealFood(mealFood, meal);
                 if (!resultado)
                 {
                     throw new Exception(String.Format(ERROR_ADDING_FOOD_TO_MEAL, mealFood.Food.FoodID, mealFood.Meal.MealID));
@@ -98,12 +98,12 @@ namespace MealPrep.Dao
             return resultado;
         }
 
-        private bool SaveNewMealFood(MealFood mealFood)
+        private bool SaveNewMealFood(MealFood mealFood, Meal meal)
         {
             NpgsqlConnection con = connectionPostgres.GetConnection();
             con.Open();
             NpgsqlCommand command = new NpgsqlCommand(INSERT_INTO_MEAL_FOOD, con);
-            command.Parameters.AddWithValue(":id_meal", mealFood.Meal.MealID);
+            command.Parameters.AddWithValue(":id_meal", meal.MealID);
             command.Parameters.AddWithValue(":id_food", mealFood.Food.FoodID);
             command.Parameters.AddWithValue(":amount", mealFood.Amount);
             command.Parameters.AddWithValue(":weight", mealFood.Weigth);

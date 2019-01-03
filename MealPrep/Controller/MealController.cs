@@ -43,9 +43,9 @@ namespace MealPrep.Controller
             return mealDao.GetNextId();
         }
 
-        public bool AddMealFood(List<MealFood> mealFoods)
+        public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
         {
-            return mealDao.AddMealFood(mealFoods);
+            return mealDao.AddMealFood(mealFoods, meal);
         }
 
         public List<FullMeal> GetMealWithFoods(User user)
