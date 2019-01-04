@@ -1,4 +1,5 @@
 ﻿using MealPrep.Dao;
+using MealPrep.Interfaces;
 using MealPrep.Model;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace MealPrep.Controller
 {
     public class UserController
     {        
-        private UserDao dao;
+        private IUserDao dao;
         private const String ERROR_USER_ALREADY_EXIST = "Error! User already exists.";
 
-        public UserController(UserDao dao)
+        public UserController(IUserDao dao)
         {
             this.dao = dao;
         }
