@@ -58,10 +58,10 @@ namespace MealPrep.Controller
                 double fat = 0;
                 foreach (var f in m.MealFoods)
                 {
-                    calories += UsefulAlgorithms.By3Rule(amount, f.Food.Calories, f.Amount);
-                    carbs += UsefulAlgorithms.By3Rule(amount, f.Food.Carbs, f.Amount);
-                    protein += UsefulAlgorithms.By3Rule(amount, f.Food.Protein, f.Amount);
-                    fat += UsefulAlgorithms.By3Rule(amount, f.Food.Fat, f.Amount);
+                    calories += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Calories, f.Food.Amount);
+                    carbs += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Carbs, f.Food.Amount);
+                    protein += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Protein, f.Food.Amount);
+                    fat += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Fat, f.Food.Amount);
                 }
                 fullMeals.Add(new FullMeal()
                 {
