@@ -1,4 +1,5 @@
 ﻿using MealPrep.Dao;
+using MealPrep.Interfaces;
 using MealPrep.Model;
 using MealPrep.Useful;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MealPrep.Controller
 {
-    public class MealController
+    public class MealController : IMealController
     {
         private MealDao mealDao;
         private FoodController foodController;
@@ -19,11 +20,6 @@ namespace MealPrep.Controller
         {
             this.mealDao = mealDao;
             this.foodController = foodController;
-        }
-
-        public List<Meal> GetAllMeals(User user)
-        {
-            return mealDao.GetAllMealsFromUser(user);
         }
 
         public bool AddMeal(Meal meal, User user)
@@ -38,23 +34,23 @@ namespace MealPrep.Controller
             }
         }
 
-        public int GetNextId()
-        {
-            return mealDao.GetNextId();
-        }
-
         public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
         {
             return mealDao.AddMealFood(mealFoods, meal);
+        }
+
+        public List<Meal> GetAllMeals(User user)
+        {
+            return mealDao.GetAllMealsFromUser(user);
         }
 
         public List<FullMeal> GetMealWithFoods(User user)
         {
             List<FullMeal> fullMeals = new List<FullMeal>();
             List<Meal> meals = GetAllMeals(user);
-            
+
             foreach (Meal m in meals)
-            {                 
+            {
                 var amount = m.MealFoods.Sum(a => a.Amount);
                 double calories = 0;
                 double carbs = 0;
@@ -83,5 +79,9 @@ namespace MealPrep.Controller
             return fullMeals;
         }
 
+        public int GetNextId()
+        {
+            return mealDao.GetNextId();
+        }
     }
 }
