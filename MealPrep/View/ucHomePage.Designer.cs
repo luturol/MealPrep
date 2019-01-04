@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelScroll = new System.Windows.Forms.Panel();
-            this.panelMeal = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.foodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,26 +36,24 @@
             this.addVitaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelScroll.SuspendLayout();
+            this.txtCarbs = new System.Windows.Forms.TextBox();
+            this.txtFat = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtProtein = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCalories = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtToday = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.gcFullMeals = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFullMeals)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelScroll
-            // 
-            this.panelScroll.AutoScroll = true;
-            this.panelScroll.Controls.Add(this.panelMeal);
-            this.panelScroll.Location = new System.Drawing.Point(35, 93);
-            this.panelScroll.Name = "panelScroll";
-            this.panelScroll.Size = new System.Drawing.Size(718, 417);
-            this.panelScroll.TabIndex = 0;
-            // 
-            // panelMeal
-            // 
-            this.panelMeal.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.panelMeal.Location = new System.Drawing.Point(3, 3);
-            this.panelMeal.Name = "panelMeal";
-            this.panelMeal.Size = new System.Drawing.Size(687, 411);
-            this.panelMeal.TabIndex = 0;
             // 
             // label1
             // 
@@ -127,26 +123,154 @@
             this.addMealToolStripMenuItem.Text = "Add Meal";
             this.addMealToolStripMenuItem.Click += new System.EventHandler(this.addMealToolStripMenuItem_Click);
             // 
+            // txtCarbs
+            // 
+            this.txtCarbs.Location = new System.Drawing.Point(58, 74);
+            this.txtCarbs.Name = "txtCarbs";
+            this.txtCarbs.Size = new System.Drawing.Size(88, 20);
+            this.txtCarbs.TabIndex = 18;
+            // 
+            // txtFat
+            // 
+            this.txtFat.Location = new System.Drawing.Point(58, 100);
+            this.txtFat.Name = "txtFat";
+            this.txtFat.Size = new System.Drawing.Size(88, 20);
+            this.txtFat.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(27, 104);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Fat:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Amount:";
+            // 
+            // txtProtein
+            // 
+            this.txtProtein.Location = new System.Drawing.Point(214, 74);
+            this.txtProtein.Name = "txtProtein";
+            this.txtProtein.Size = new System.Drawing.Size(88, 20);
+            this.txtProtein.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(165, 77);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Protein:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(157, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Calories*:";
+            // 
+            // txtCalories
+            // 
+            this.txtCalories.Location = new System.Drawing.Point(214, 48);
+            this.txtCalories.Name = "txtCalories";
+            this.txtCalories.Size = new System.Drawing.Size(88, 20);
+            this.txtCalories.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Carbs:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblDate);
+            this.groupBox1.Controls.Add(this.dtToday);
+            this.groupBox1.Controls.Add(this.txtAmount);
+            this.groupBox1.Controls.Add(this.txtCarbs);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtFat);
+            this.groupBox1.Controls.Add(this.txtCalories);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtProtein);
+            this.groupBox1.Location = new System.Drawing.Point(231, 77);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(308, 137);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Today macros";
+            // 
+            // dtToday
+            // 
+            this.dtToday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtToday.Location = new System.Drawing.Point(58, 22);
+            this.dtToday.Name = "dtToday";
+            this.dtToday.Size = new System.Drawing.Size(88, 20);
+            this.dtToday.TabIndex = 23;
+            this.dtToday.ValueChanged += new System.EventHandler(this.dtToday_ValueChanged);
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(19, 26);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(33, 13);
+            this.lblDate.TabIndex = 24;
+            this.lblDate.Text = "Date:";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(58, 48);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(88, 20);
+            this.txtAmount.TabIndex = 14;
+            // 
+            // gcFullMeals
+            // 
+            this.gcFullMeals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gcFullMeals.Location = new System.Drawing.Point(97, 220);
+            this.gcFullMeals.Name = "gcFullMeals";
+            this.gcFullMeals.Size = new System.Drawing.Size(636, 204);
+            this.gcFullMeals.TabIndex = 24;
+            // 
             // ucHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gcFullMeals);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelScroll);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ucHomePage";
             this.Size = new System.Drawing.Size(787, 541);
-            this.panelScroll.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcFullMeals)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelScroll;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem foodToolStripMenuItem;
@@ -155,6 +279,19 @@
         private System.Windows.Forms.ToolStripMenuItem addVitaminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mealToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMealToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel panelMeal;
+        private System.Windows.Forms.TextBox txtCarbs;
+        private System.Windows.Forms.TextBox txtFat;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtProtein;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCalories;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.DateTimePicker dtToday;
+        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.DataGridView gcFullMeals;
     }
 }
