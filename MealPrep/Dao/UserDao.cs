@@ -1,4 +1,5 @@
-﻿using MealPrep.Model;
+﻿using MealPrep.Interfaces;
+using MealPrep.Model;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MealPrep.Dao
 {
-    public class UserDao
+    public class UserDao : IUserDao
     {
         private ConnectionPostgres connection;
         private const String INSERT_INTO_USER_MEAL = "INSERT INTO USER_MEAL(USERNAME, USER_PASSWORD, DATE_ADD) VALUES (:username, :password, :date);";

@@ -12,10 +12,10 @@ namespace MealPrep.Controller
 {
     public class FoodController : IFoodController
     {
-        private FoodDao foodDao;
+        private IFoodDao foodDao;
         private const string FOOD_ALREADY_EXIST = "Food already exist";        
 
-        public FoodController(FoodDao foodDao)
+        public FoodController(IFoodDao foodDao)
         {
             this.foodDao = foodDao;
         }        

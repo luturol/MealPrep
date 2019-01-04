@@ -1,4 +1,5 @@
-﻿using MealPrep.Model;
+﻿using MealPrep.Interfaces;
+using MealPrep.Model;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MealPrep.Dao
 {
-    public class MealDao
+    public class MealDao : IMealDao
     {
         private ConnectionPostgres connectionPostgres;
         private const String SELECT_ALL_MEALS_FROM_USER = "select m.id, m.username, m.date_meal from meal m where m.username = '{0}'";
@@ -23,6 +24,33 @@ namespace MealPrep.Dao
         public MealDao(ConnectionPostgres connectionPostgres)
         {
             this.connectionPostgres = connectionPostgres;
+        }
+
+        public bool AddMeal(Meal meal, User user)
+        {
+            if (SaveMeal(meal, user))
+            {
+                return true && AddMealFood(meal.MealFoods, meal);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
+        {
+            bool resultado = false;
+            foreach (MealFood mealFood in mealFoods)
+            {
+                resultado = SaveNewMealFood(mealFood, meal);
+                if (!resultado)
+                {
+                    throw new Exception(String.Format(ERROR_ADDING_FOOD_TO_MEAL, mealFood.Food.FoodID, mealFood.Meal.MealID));
+                }
+            }
+
+            return resultado;
         }
 
         public List<Meal> GetAllMealsFromUser(User user)
@@ -42,29 +70,37 @@ namespace MealPrep.Dao
             return listMeal;
         }
 
-        public bool AddMeal(Meal meal, User user)
+        public List<MealFood> GetMealFoods(Meal meal)
         {
-            if(SaveMeal(meal, user))
-            {
-                return true && AddMealFood(meal.MealFoods, meal);
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private bool SaveMeal(Meal meal, User user)
-        {
+            List<MealFood> mealFoods = new List<MealFood>();
             NpgsqlConnection con = connectionPostgres.GetConnection();
             con.Open();
-            NpgsqlCommand command = new NpgsqlCommand(INSERT_INTO_MEAL, con);
-            command.Parameters.AddWithValue(":id", meal.MealID);
-            command.Parameters.AddWithValue(":username", user.Name);
-            command.Parameters.AddWithValue(":date_meal", meal.MealDate.ToString("dd/MM/yyyy HH:mm:ss"));
-            bool value = (command.ExecuteNonQuery() > 0);
+            NpgsqlCommand command = new NpgsqlCommand(String.Format(SELECT_ALL_MEAL_FOOD, meal.MealID), con);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                string teste = dr[0].ToString();
+                mealFoods.Add(new MealFood()
+                {
+                    Meal = meal,
+                    Food = new Food()
+                    {
+                        FoodID = int.Parse(dr[3].ToString()),
+                        Name = dr[4].ToString(),
+                        Amount = double.Parse(dr[5].ToString()),
+                        Calories = double.Parse(dr[6].ToString()),
+                        Carbs = double.Parse(dr[7].ToString()),
+                        Fat = double.Parse(dr[8].ToString()),
+                        Protein = double.Parse(dr[9].ToString())
+                    },
+                    Amount = int.Parse(dr[1].ToString()),
+                    Weigth = dr[2].ToString()
+                });
+
+            }
             con.Close();
-            return value;
+
+            return mealFoods;
         }
 
         public int GetNextId()
@@ -81,21 +117,19 @@ namespace MealPrep.Dao
 
             con.Close();
             return nextValue;
-        }
+        }        
 
-        public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
+        private bool SaveMeal(Meal meal, User user)
         {
-            bool resultado = false;
-            foreach (MealFood mealFood in mealFoods)
-            {
-                resultado = SaveNewMealFood(mealFood, meal);
-                if (!resultado)
-                {
-                    throw new Exception(String.Format(ERROR_ADDING_FOOD_TO_MEAL, mealFood.Food.FoodID, mealFood.Meal.MealID));
-                }
-            }
-
-            return resultado;
+            NpgsqlConnection con = connectionPostgres.GetConnection();
+            con.Open();
+            NpgsqlCommand command = new NpgsqlCommand(INSERT_INTO_MEAL, con);
+            command.Parameters.AddWithValue(":id", meal.MealID);
+            command.Parameters.AddWithValue(":username", user.Name);
+            command.Parameters.AddWithValue(":date_meal", meal.MealDate.ToString("dd/MM/yyyy HH:mm:ss"));
+            bool value = (command.ExecuteNonQuery() > 0);
+            con.Close();
+            return value;
         }
 
         private bool SaveNewMealFood(MealFood mealFood, Meal meal)
@@ -110,37 +144,6 @@ namespace MealPrep.Dao
             bool value = (command.ExecuteNonQuery() > 0);
             con.Close();
             return value;
-        }
-
-        public List<MealFood> GetMealFoods(Meal meal)
-        {
-            List<MealFood> mealFoods = new List<MealFood>();
-            NpgsqlConnection con = connectionPostgres.GetConnection();
-            con.Open();
-            NpgsqlCommand command = new NpgsqlCommand(String.Format(SELECT_ALL_MEAL_FOOD, meal.MealID), con);
-            NpgsqlDataReader dr = command.ExecuteReader();            
-            while (dr.Read())
-            {
-                string teste = dr[0].ToString();
-                mealFoods.Add(new MealFood() { Meal = meal,                    
-                    Food = new Food()
-                    {
-                        FoodID = int.Parse(dr[3].ToString()),
-                        Name = dr[4].ToString(),
-                        Amount = double.Parse(dr[5].ToString()),
-                        Calories = double.Parse(dr[6].ToString()),
-                        Carbs = double.Parse(dr[7].ToString()),
-                        Fat = double.Parse(dr[8].ToString()),
-                        Protein = double.Parse(dr[9].ToString())                        
-                    },
-                    Amount = int.Parse(dr[1].ToString()),
-                    Weigth = dr[2].ToString()
-                });
-
-            }
-            con.Close();
-            
-            return mealFoods;
-        }
+        }       
     }
 }
