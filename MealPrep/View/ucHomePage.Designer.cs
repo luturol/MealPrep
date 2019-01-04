@@ -46,10 +46,11 @@
             this.txtCalories = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtToday = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
+            this.dtToday = new System.Windows.Forms.DateTimePicker();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.gcFullMeals = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcFullMeals)).BeginInit();
@@ -217,15 +218,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Today macros";
             // 
-            // dtToday
-            // 
-            this.dtToday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtToday.Location = new System.Drawing.Point(58, 22);
-            this.dtToday.Name = "dtToday";
-            this.dtToday.Size = new System.Drawing.Size(88, 20);
-            this.dtToday.TabIndex = 23;
-            this.dtToday.ValueChanged += new System.EventHandler(this.dtToday_ValueChanged);
-            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -234,6 +226,15 @@
             this.lblDate.Size = new System.Drawing.Size(33, 13);
             this.lblDate.TabIndex = 24;
             this.lblDate.Text = "Date:";
+            // 
+            // dtToday
+            // 
+            this.dtToday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtToday.Location = new System.Drawing.Point(58, 22);
+            this.dtToday.Name = "dtToday";
+            this.dtToday.Size = new System.Drawing.Size(88, 20);
+            this.dtToday.TabIndex = 23;
+            this.dtToday.ValueChanged += new System.EventHandler(this.dtToday_ValueChanged);
             // 
             // txtAmount
             // 
@@ -250,10 +251,21 @@
             this.gcFullMeals.Size = new System.Drawing.Size(636, 204);
             this.gcFullMeals.TabIndex = 24;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = global::MealPrep.Properties.Resources.Custom_Icon_Design_Flatastic_8_Refresh;
+            this.btnRefresh.Location = new System.Drawing.Point(179, 32);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(43, 39);
+            this.btnRefresh.TabIndex = 25;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // ucHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.gcFullMeals);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -293,5 +305,6 @@
         private System.Windows.Forms.DateTimePicker dtToday;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.DataGridView gcFullMeals;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

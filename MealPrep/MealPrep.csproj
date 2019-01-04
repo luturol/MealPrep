@@ -157,6 +157,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\FormAuxiliary.resx">
       <DependentUpon>FormAuxiliary.cs</DependentUpon>
@@ -207,6 +208,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Aha-Soft-Desktop-Buffet-Salad.ico" />
+    <None Include="Images\Custom-Icon-Design-Flatastic-8-Refresh.ico" />
+    <None Include="Images\Refresh-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
