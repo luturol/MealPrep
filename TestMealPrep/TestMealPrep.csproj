@@ -48,8 +48,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\MealControllerTest.cs" />
     <Compile Include="Dao\FakeFoodDao.cs" />
-    <Compile Include="FoodDaoTest.cs" />
+    <Compile Include="Dao\FakeMealDao.cs" />
+    <Compile Include="Dao\FoodDaoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

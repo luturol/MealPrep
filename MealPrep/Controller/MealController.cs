@@ -12,11 +12,11 @@ namespace MealPrep.Controller
 {
     public class MealController : IMealController
     {
-        private MealDao mealDao;
+        private IMealDao mealDao;
         private FoodController foodController;
         private const String ERROR_MEAL_ALREADY_EXIST = "Error! Meal already exist.";
 
-        public MealController(MealDao mealDao, FoodController foodController)
+        public MealController(IMealDao mealDao, FoodController foodController)
         {
             this.mealDao = mealDao;
             this.foodController = foodController;

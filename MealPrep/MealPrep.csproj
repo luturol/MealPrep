@@ -71,6 +71,8 @@
     </Compile>
     <Compile Include="Interfaces\IFoodController.cs" />
     <Compile Include="Interfaces\IFoodDao.cs" />
+    <Compile Include="Interfaces\IMealController.cs" />
+    <Compile Include="Interfaces\IMealDao.cs" />
     <Compile Include="Model\Food.cs" />
     <Compile Include="Model\FoodVitamin.cs" />
     <Compile Include="Model\FullMeal.cs" />

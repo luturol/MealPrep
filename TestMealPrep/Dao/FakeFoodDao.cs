@@ -30,6 +30,11 @@ namespace TestMealPrep.Dao
             }
         }
 
+        public bool AddFoodVitamin(List<FoodVitamin> foodVitamins)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Food> GetAllFoods()
         {
             return fakeDB.Values.ToList();

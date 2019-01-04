@@ -10,7 +10,8 @@ namespace MealPrep.Interfaces
     public interface IFoodDao
     {
         bool AddFood(Food food);
+        bool AddFoodVitamin(List<FoodVitamin> foodVitamins);
         List<Food> GetAllFoods();
-        int GetNextID();
+        int GetNextID();                
     }
 }
