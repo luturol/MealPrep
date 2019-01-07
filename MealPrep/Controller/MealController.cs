@@ -58,7 +58,7 @@ namespace MealPrep.Controller
             {
                 Amount = amount,
                 Foods = meal.MealFoods.Select(f => f.Food).ToList(),
-                MealId = meal.MealID,
+                Meal = meal,
                 Calories = calories,
                 Carbs = carbs,
                 Fat = fat,
@@ -83,6 +83,11 @@ namespace MealPrep.Controller
                 fullMeals.Add(CreateFullMeal(m));
             }
             return fullMeals;
+        }
+
+        public FullMeal GetFullMealByMealID(int mealID)
+        {
+            return CreateFullMeal(mealDao.GetMealByID(mealID));
         }
 
         public int GetNextId()

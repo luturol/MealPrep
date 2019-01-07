@@ -45,14 +45,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtCalories = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpTodayMacros = new System.Windows.Forms.GroupBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.dtToday = new System.Windows.Forms.DateTimePicker();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.gcFullMeals = new System.Windows.Forms.DataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gpTodayMacros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcFullMeals)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,26 +197,26 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Carbs:";
             // 
-            // groupBox1
+            // gpTodayMacros
             // 
-            this.groupBox1.Controls.Add(this.lblDate);
-            this.groupBox1.Controls.Add(this.dtToday);
-            this.groupBox1.Controls.Add(this.txtAmount);
-            this.groupBox1.Controls.Add(this.txtCarbs);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtFat);
-            this.groupBox1.Controls.Add(this.txtCalories);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtProtein);
-            this.groupBox1.Location = new System.Drawing.Point(231, 77);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(308, 137);
-            this.groupBox1.TabIndex = 23;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Today macros";
+            this.gpTodayMacros.Controls.Add(this.lblDate);
+            this.gpTodayMacros.Controls.Add(this.dtToday);
+            this.gpTodayMacros.Controls.Add(this.txtAmount);
+            this.gpTodayMacros.Controls.Add(this.txtCarbs);
+            this.gpTodayMacros.Controls.Add(this.label5);
+            this.gpTodayMacros.Controls.Add(this.txtFat);
+            this.gpTodayMacros.Controls.Add(this.txtCalories);
+            this.gpTodayMacros.Controls.Add(this.label7);
+            this.gpTodayMacros.Controls.Add(this.label4);
+            this.gpTodayMacros.Controls.Add(this.label3);
+            this.gpTodayMacros.Controls.Add(this.label6);
+            this.gpTodayMacros.Controls.Add(this.txtProtein);
+            this.gpTodayMacros.Location = new System.Drawing.Point(231, 77);
+            this.gpTodayMacros.Name = "gpTodayMacros";
+            this.gpTodayMacros.Size = new System.Drawing.Size(308, 137);
+            this.gpTodayMacros.TabIndex = 23;
+            this.gpTodayMacros.TabStop = false;
+            this.gpTodayMacros.Text = "Today macros";
             // 
             // lblDate
             // 
@@ -245,15 +245,19 @@
             // 
             // gcFullMeals
             // 
+            this.gcFullMeals.AllowUserToAddRows = false;
+            this.gcFullMeals.AllowUserToDeleteRows = false;
             this.gcFullMeals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gcFullMeals.Location = new System.Drawing.Point(97, 220);
             this.gcFullMeals.Name = "gcFullMeals";
             this.gcFullMeals.Size = new System.Drawing.Size(636, 204);
             this.gcFullMeals.TabIndex = 24;
+            this.gcFullMeals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gcFullMeals_CellClick);
+            this.gcFullMeals.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gcFullMeals_CellContentDoubleClick);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Image = global::MealPrep.Properties.Resources.Custom_Icon_Design_Flatastic_8_Refresh;
+            this.btnRefresh.Image = global::MealPrep.Properties.Resources.refresh;
             this.btnRefresh.Location = new System.Drawing.Point(179, 32);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(43, 39);
@@ -267,15 +271,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.gcFullMeals);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpTodayMacros);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ucHomePage";
             this.Size = new System.Drawing.Size(787, 541);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpTodayMacros.ResumeLayout(false);
+            this.gpTodayMacros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcFullMeals)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -300,7 +304,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCalories;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpTodayMacros;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.DateTimePicker dtToday;
         private System.Windows.Forms.TextBox txtAmount;

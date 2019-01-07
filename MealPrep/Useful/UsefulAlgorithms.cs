@@ -42,5 +42,13 @@ namespace MealPrep.Useful
             // value2 = value3
             return (value1 * value2) / value3;
         }
+
+        public static void BlockGrid(DataGridView gridView)
+        {
+            foreach(DataGridViewColumn column in gridView.Columns)
+            {
+                column.ReadOnly = true;
+            }
+        }
     }
 }

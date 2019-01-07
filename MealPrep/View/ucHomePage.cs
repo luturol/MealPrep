@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Model;
+using MealPrep.Useful;
 
 namespace MealPrep.View
 {
@@ -18,6 +19,15 @@ namespace MealPrep.View
         private FoodController foodController;
         private VitaminController vitaminController;
         private User user;
+
+        #region GRID CONFIG
+        private const string COLUMNS_AMOUNT = "Amount";
+        private const string COLUMNS_CALORIES = "Calories";
+        private const string COLUMNS_CARBS = "Carbs";
+        private const string COLUMNS_FAT = "Fat";
+        private const string COLUMNS_MEAL_ID = "Meal ID";
+        private const string COLUMNS_PROTEIN = "Protein";
+        #endregion
 
         public ucHomePage(MealController mealController, FoodController foodController, VitaminController vitaminController, User user)
         {
@@ -64,18 +74,19 @@ namespace MealPrep.View
             txtProtein.Text = Math.Round(fullMeals.Sum(e => e.Protein), 2).ToString();
 
             gcFullMeals.DataSource = PopulateTableFullMeal(fullMeals);
+            UsefulAlgorithms.BlockGrid(gcFullMeals);
         }
 
         private DataTable CreateTableForFullMeals()
         {
             DataTable table = new DataTable();
             table.Columns.AddRange(new DataColumn[6] {
-                        new DataColumn("Meal ID", typeof(string)),
-                        new DataColumn("Amount", typeof(string)),
-                        new DataColumn("Calories", typeof(string)),
-                        new DataColumn("Carbs", typeof(string)),
-                        new DataColumn("Protein", typeof(string)),
-                        new DataColumn("Fat", typeof(string))
+                        new DataColumn(COLUMNS_MEAL_ID, typeof(string)),
+                        new DataColumn(COLUMNS_AMOUNT, typeof(string)),
+                        new DataColumn(COLUMNS_CALORIES, typeof(string)),
+                        new DataColumn(COLUMNS_CARBS, typeof(string)),
+                        new DataColumn(COLUMNS_PROTEIN, typeof(string)),
+                        new DataColumn(COLUMNS_FAT, typeof(string))
             });
             return table;
         }
@@ -86,7 +97,7 @@ namespace MealPrep.View
 
             foreach (FullMeal fullMeal in fullMeals)
             {
-                tableFullMeal.Rows.Add(fullMeal.MealId, Math.Round(fullMeal.Amount, 2), Math.Round(fullMeal.Calories, 2), Math.Round(fullMeal.Carbs, 2), Math.Round(fullMeal.Protein, 2), Math.Round(fullMeal.Fat, 2));
+                tableFullMeal.Rows.Add(fullMeal.Meal.MealID, Math.Round(fullMeal.Amount, 2), Math.Round(fullMeal.Calories, 2), Math.Round(fullMeal.Carbs, 2), Math.Round(fullMeal.Protein, 2), Math.Round(fullMeal.Fat, 2));
             }
 
             return tableFullMeal;
@@ -100,6 +111,29 @@ namespace MealPrep.View
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadMealsByChoosenDay(dtToday.Value);
+        }
+
+        private void gcFullMeals_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.gcFullMeals.Rows[e.RowIndex];
+                FullMeal meal = mealController.GetFullMealByMealID(int.Parse(row.Cells[COLUMNS_MEAL_ID].Value.ToString()));
+
+                FormAuxiliary formAuxiliary = new FormAuxiliary(new ucFullMeal(meal));
+            }
+        }
+
+        private void gcFullMeals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.gcFullMeals.Rows[e.RowIndex];
+                FullMeal fullMeal = mealController.GetFullMealByMealID(int.Parse(row.Cells[COLUMNS_MEAL_ID].Value.ToString()));
+
+                FormAuxiliary fullMealView = new FormAuxiliary(new ucFullMeal(fullMeal));
+                fullMealView.ShowDialog();
+            }
         }
     }
 }

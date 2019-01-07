@@ -16,9 +16,10 @@ namespace MealPrep.Dao
         private const String SELECT_ALL_FOODS_FROM_MEAL = "select m.id, m.username, m.date_meal, f.id, f.amout, f.name, f.calories, f.carbs, f.fat, f.protein from meal m inner join meal_food mf on mf.id_meal = m.id inner join food f on f.id = mf.id_food where m.username = {0} ";
         private const String SELECT_NEXT_ID = "select max(m.id) + 1 as nextid from meal m;";
         private const String SELECT_ALL_MEAL_FOOD = "select m.id_meal, m.amount, m.weight, f.id, f.name, f.amount, f.calories, f.carbs, f.fat, f.protein from meal_food m inner join food f on m.id_food = f.id where m.id_meal = {0};";
+        private const String SELECT_MEAL = "select  m.id, m.username, m.date_meal from meal m where m.id = '{0}'";
         private const String INSERT_INTO_MEAL = "insert into meal(id, username, date_meal) values(:id, :username, to_timestamp(:date_meal, 'dd-mm-yyyy hh24:mi:ss'));";
         private const String INSERT_INTO_MEAL_FOOD = "insert into meal_food(id_meal, id_food, amount, weight) values(:id_meal, :id_food, :amount, :weight);";
-           
+
         private const String ERROR_ADDING_FOOD_TO_MEAL = "Error! Check if is valid add this new food {0} to this meal {1}";
 
         public MealDao(ConnectionPostgres connectionPostgres)
@@ -70,6 +71,26 @@ namespace MealPrep.Dao
             return listMeal;
         }
 
+        public Meal GetMealByID(int mealID)
+        {
+            NpgsqlConnection con = connectionPostgres.GetConnection();
+            con.Open();
+            NpgsqlCommand command = new NpgsqlCommand(String.Format(SELECT_MEAL, mealID), con);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            Meal meal = new Meal();
+            while (dr.Read())
+            {
+                meal.MealID = int.Parse(dr[0].ToString());
+                meal.User = new User(dr[1].ToString(), string.Empty);
+                meal.MealDate = DateTime.Parse(dr[2].ToString());                
+            }
+            con.Close();
+
+            meal.MealFoods = GetMealFoods(meal);
+
+            return meal;
+        }
+
         public List<MealFood> GetMealFoods(Meal meal)
         {
             List<MealFood> mealFoods = new List<MealFood>();
@@ -117,7 +138,7 @@ namespace MealPrep.Dao
 
             con.Close();
             return nextValue;
-        }        
+        }
 
         private bool SaveMeal(Meal meal, User user)
         {
@@ -144,6 +165,6 @@ namespace MealPrep.Dao
             bool value = (command.ExecuteNonQuery() > 0);
             con.Close();
             return value;
-        }       
+        }
     }
 }

@@ -103,7 +103,7 @@ namespace TestMealPrep.Controller
         {
             MealController mealController = CreateMealControllerWithMeal();
            
-            FullMeal fullMeal = mealController.GetMealWithFoods(USER).Find(e => e.MealId == 0);
+            FullMeal fullMeal = mealController.GetMealWithFoods(USER).Find(e => e.Meal.MealID == 0);
             Assert.AreEqual(fullMeal.Calories, 150);
         }
     }

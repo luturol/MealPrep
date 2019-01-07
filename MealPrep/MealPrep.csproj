@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\Aha-Soft-Desktop-Buffet-Salad.ico</ApplicationIcon>
+    <ApplicationIcon>Images\salad.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Npgsql, Version=3.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
@@ -97,6 +97,12 @@
     </Compile>
     <Compile Include="View\ucAddMeal.Designer.cs">
       <DependentUpon>ucAddMeal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucFullMeal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucFullMeal.Designer.cs">
+      <DependentUpon>ucFullMeal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucProgressBar.cs">
       <SubType>UserControl</SubType>
@@ -166,6 +172,9 @@
     <EmbeddedResource Include="View\ucAddMeal.resx">
       <DependentUpon>ucAddMeal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ucFullMeal.resx">
+      <DependentUpon>ucFullMeal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ucProgressBar.resx">
       <DependentUpon>ucProgressBar.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,9 +216,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Aha-Soft-Desktop-Buffet-Salad.ico" />
-    <None Include="Images\Custom-Icon-Design-Flatastic-8-Refresh.ico" />
-    <None Include="Images\Refresh-icon.png" />
+    <Content Include="Images\salad.ico" />
+    <None Include="Images\refresh.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
