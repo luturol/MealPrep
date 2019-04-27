@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MealPrep.Dao
+namespace MealPrep.Repository
 {
     public class ConnectionPostgres
     {

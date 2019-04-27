@@ -58,11 +58,11 @@
     <Compile Include="Controller\MealController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Controller\VitaminController.cs" />
-    <Compile Include="Dao\ConnectionPostgres.cs" />
-    <Compile Include="Dao\FoodDao.cs" />
-    <Compile Include="Dao\MealDao.cs" />
-    <Compile Include="Dao\UserDao.cs" />
-    <Compile Include="Dao\VitaminDao.cs" />
+    <Compile Include="Repository\ConnectionPostgres.cs" />
+    <Compile Include="Repository\FoodDao.cs" />
+    <Compile Include="Repository\MealDao.cs" />
+    <Compile Include="Repository\UserDao.cs" />
+    <Compile Include="Repository\VitaminDao.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
