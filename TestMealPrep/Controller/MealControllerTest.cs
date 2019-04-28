@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using MealPrep.Controller;
+using MealPrep.Food.Controller;
+using MealPrep.Food.Model;
+using MealPrep.Login.Model;
+using MealPrep.Meal.Controller;
+using MealPrep.Meal.Model;
 using MealPrep.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestMealPrep.Dao;
@@ -11,7 +15,7 @@ namespace TestMealPrep.Controller
     public class MealControllerTest
     {
         private static readonly User USER = new User("rafael", "rafael");
-        private static readonly Food FOOD = new Food()
+        private static readonly FoodEntity FOOD = new FoodEntity()
         {
             FoodID = 1,
             Name = "Chicken",
@@ -39,7 +43,7 @@ namespace TestMealPrep.Controller
         {
             MealController mealController = CreateMealController();
 
-            Meal meal = new Meal()
+            MealEntity meal = new MealEntity()
             {
                 MealDate = DateTime.Today,
                 MealID = 0,
@@ -65,7 +69,7 @@ namespace TestMealPrep.Controller
         [TestMethod]
         public void ShouldBeAbleToAddNewMeal()
         {
-            Food food = new Food()
+            FoodEntity food = new FoodEntity()
             {
                 FoodID = 1,
                 Name = "Chicken",
@@ -77,7 +81,7 @@ namespace TestMealPrep.Controller
                 FoodVitamins = new List<FoodVitamin>()
             };
             MealController mealController = CreateMealController();
-            Meal meal = new Meal()
+            MealEntity meal = new MealEntity()
             {
                 MealDate = DateTime.Today,
                 MealID = 0,

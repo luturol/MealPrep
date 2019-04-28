@@ -1,8 +1,9 @@
 ﻿using System.Windows.Forms;
-using MealPrep.Controller;
-using MealPrep.Repository;
-using MealPrep.Useful;
-using MealPrep.View;
+using MealPrep.Connection;
+using MealPrep.Login.Controller;
+using MealPrep.Login.Repository;
+using MealPrep.Login.View;
+using MealPrep.Utils;
 
 namespace MealPrep
 {
@@ -18,10 +19,7 @@ namespace MealPrep
         {
             ConnectionPostgres conn = new ConnectionPostgres("127.0.0.1", "5432", "postgres", "a.123456", "mealprep");
             UserController userController = new UserController(new UserDao(conn));
-            FoodController foodController = new FoodController(new FoodDao(conn));
-            MealController mealController = new MealController(new MealDao(conn), foodController);            
-            VitaminController vitaminController = new VitaminController(new VitaminDao(conn));
-            this.Controls.Add(new ucLoginPage(userController, mealController, foodController, vitaminController));
+            this.Controls.Add(new ucLoginPage());
             UsefulAlgorithms.AdjustFormSize(this);
         }        
     }
