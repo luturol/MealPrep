@@ -1,4 +1,5 @@
-﻿using MealPrep.Utils;
+﻿using MealPrep.Model;
+using MealPrep.Useful;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

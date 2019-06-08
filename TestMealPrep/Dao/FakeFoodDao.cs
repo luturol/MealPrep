@@ -1,6 +1,4 @@
-﻿using MealPrep.Food.Interfaces;
-using MealPrep.Food.Model;
-using MealPrep.Interfaces;
+﻿using MealPrep.Interfaces;
 using MealPrep.Model;
 using System;
 using System.Collections.Generic;
@@ -12,14 +10,14 @@ namespace TestMealPrep.Dao
 {
     public class FakeFoodDao : IFoodDao
     {
-        private Dictionary<int, FoodEntity> fakeDB;
+        private Dictionary<int, Food> fakeDB;
 
         public FakeFoodDao()
         {
-            fakeDB = new Dictionary<int, FoodEntity>();
+            fakeDB = new Dictionary<int, Food>();
         }
 
-        public bool AddFood(FoodEntity food)
+        public bool AddFood(Food food)
         {
             if(!GetAllFoods().Exists(f => f.FoodID == food.FoodID))
             {
@@ -37,7 +35,7 @@ namespace TestMealPrep.Dao
             throw new NotImplementedException();
         }
 
-        public List<FoodEntity> GetAllFoods()
+        public List<Food> GetAllFoods()
         {
             return fakeDB.Values.ToList();
         }

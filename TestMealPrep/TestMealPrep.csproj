@@ -58,18 +58,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Login\MealPrep.Login.csproj">
-      <Project>{4DB12A00-3B93-4E6E-8504-0631819B3D3F}</Project>
-      <Name>MealPrep.Login</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MealPrep.Food\MealPrep.Food.csproj">
-      <Project>{322A678F-FB77-409E-9930-435EC1E89CDE}</Project>
-      <Name>MealPrep.Food</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MealPrep.Meal\MealPrep.Meal.csproj">
-      <Project>{82CA0B19-E63E-4396-A543-E077470BF059}</Project>
-      <Name>MealPrep.Meal</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MealPrep\MealPrep.csproj">
       <Project>{47f82ee4-7bfc-4ae0-b5bf-9bec9ad8e320}</Project>
       <Name>MealPrep</Name>
