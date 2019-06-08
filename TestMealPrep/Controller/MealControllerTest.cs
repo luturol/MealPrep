@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MealPrep.Controller;
 using MealPrep.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhino.Mocks;
 using TestMealPrep.Dao;
 
 namespace TestMealPrep.Controller
@@ -60,6 +61,12 @@ namespace TestMealPrep.Controller
             mealController.AddMeal(meal, USER);
 
             return mealController;
+        }
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            var controller = MockRepository.GenerateStub<MealController>();
         }
 
         [TestMethod]
