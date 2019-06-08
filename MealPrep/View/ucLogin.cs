@@ -21,6 +21,7 @@ namespace MealPrep.View
         private const String ERROR_NEED_TO_FULL_FILL_THE_FORM = "Error! Need to full fill the form.";
         private const String ERROR_WRONG_USER_OR_PASSWORD = "Error! Wrong User or Password";
         private const String CONTROL_TITLE = "Login";
+
         public ucLogin(UserController userController, MealController mealController,
                        FoodController foodController, VitaminController vitaminController)
         {

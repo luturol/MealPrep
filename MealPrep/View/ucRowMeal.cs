@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MealPrep.Interfaces;
 
 namespace MealPrep.View
 {
-    public partial class ucRowMeal : UserControl
+    public partial class ucRowMeal : UserControl, IView
     {
         private int id;
         private string date;
@@ -31,7 +32,7 @@ namespace MealPrep.View
             Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             lblMealID.Text = id.ToString();
             lblDateMeal.Text = date;

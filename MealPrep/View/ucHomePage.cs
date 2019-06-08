@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Model;
+using MealPrep.Interfaces;
 
 namespace MealPrep.View
 {
-    public partial class ucHomePage : UserControl
+    public partial class ucHomePage : UserControl, IView
     {
         private MealController mealController;
         private FoodController foodController;
@@ -29,7 +30,7 @@ namespace MealPrep.View
             Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             List<FullMeal> meals = mealController.GetMealWithFoods(user).OrderByDescending(a => a.Date).ToList();
             foreach(FullMeal meal in meals)

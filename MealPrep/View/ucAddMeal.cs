@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Model;
+using MealPrep.Interfaces;
 
 namespace MealPrep.View
 {
-    public partial class ucAddMeal : UserControl
+    public partial class ucAddMeal : UserControl, IView
     {
         private FoodController foodController;
         private MealController mealController;
@@ -37,7 +38,7 @@ namespace MealPrep.View
             Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             InitializeComboBox();
             gcFoods.DataSource = TableFoodVitamin();
