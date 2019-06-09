@@ -138,12 +138,12 @@ namespace MealPrep.View
                 {
                     Meal meal = new Meal()
                     {
-                        MealDate = dateTimePicker1.Value,
-                        MealID = mealController.GetNextId(),
+                        Date = dateTimePicker1.Value,
+                        Id = mealController.GetNextId(),
                         User = user
                     };
-                    meal.MealFoods = GetAllFoods(meal.MealID);
-                    if(mealController.AddMeal(meal, user))
+                    meal.Foods = GetAllFoods(meal.Id);
+                    if(mealController.AddMeal(meal))
                     {
                         MessageBox.Show(MESSAGE_MEAL_ADD_WITH_SUCCESS, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -177,19 +177,20 @@ namespace MealPrep.View
             return meal.Rows.Count > 0;
         }
 
-        private List<MealFood> GetAllFoods(int mealId)
+        private List<Food> GetAllFoods(int mealId)
         {
-            List<MealFood> mealFoods = new List<MealFood>();
+            List<Food> mealFoods = new List<Food>();
             DataTable tableFoods = (DataTable)gcFoods.DataSource;
             foreach (DataRow food in tableFoods.Rows)
             {
-                mealFoods.Add(new MealFood
-                {
-                    Food = foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())),
-                    //Meal = mealController.GetAllMeals(user).Single(m => m.MealID == mealId),
-                    Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
-                    Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
-                });
+                mealFoods.Add(foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())));
+                //mealFoods.Add(new Food
+                //{
+                //    Food = foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())),
+                //Meal = mealController.GetAllMeals(user).Single(m => m.MealID == mealId),
+                //    Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
+                //    Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
+                //});
             }
             return mealFoods;
         }

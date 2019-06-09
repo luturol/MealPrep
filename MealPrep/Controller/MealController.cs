@@ -22,49 +22,49 @@ namespace MealPrep.Controller
             this.foodController = foodController;
         }
 
-        public bool AddMeal(Meal meal, User user)
+        public bool AddMeal(Meal meal)
         {
-            if (GetAllMeals(user).Exists(m => m.MealID == meal.MealID))
+            if (GetAllMeals(meal.User).Exists(m => m.Id == meal.Id))
             {
                 throw new Exception(ERROR_MEAL_ALREADY_EXIST);
             }
             else
             {
-                return mealDao.AddMeal(meal, user);
+                return mealDao.AddMeal(meal);
             }
         }
 
-        public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
+        public bool AddMealFood(Meal meal)
         {
-            return mealDao.AddMealFood(mealFoods, meal);
+            return mealDao.AddMealFood(meal);
         }
 
         private FullMeal CreateFullMeal(Meal meal)
         {
-            var amount = meal.MealFoods.Sum(a => a.Amount);
+            var amount = meal.Foods.Sum(a => a.Amount);
             double calories = 0;
             double carbs = 0;
             double protein = 0;
             double fat = 0;
-            foreach (var f in meal.MealFoods)
+            foreach (var f in meal.Foods)
             {
-                calories += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Calories, f.Food.Amount);
-                carbs += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Carbs, f.Food.Amount);
-                protein += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Protein, f.Food.Amount);
-                fat += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Fat, f.Food.Amount);
+                calories += UsefulAlgorithms.By3Rule(f.Amount, f.Calories, f.Amount);
+                carbs += UsefulAlgorithms.By3Rule(f.Amount, f.Carbs, f.Amount);
+                protein += UsefulAlgorithms.By3Rule(f.Amount, f.Protein, f.Amount);
+                fat += UsefulAlgorithms.By3Rule(f.Amount, f.Fat, f.Amount);
             }
 
             return new FullMeal()
             {
                 Amount = amount,
-                Foods = meal.MealFoods.Select(f => f.Food).ToList(),
-                MealId = meal.MealID,
+                Foods = meal.Foods,
+                MealId = meal.Id,
                 Calories = calories,
                 Carbs = carbs,
                 Fat = fat,
                 Protein = protein,
                 Weigth = "g",
-                Date = meal.MealDate
+                Date = meal.Date
             };
         }
 

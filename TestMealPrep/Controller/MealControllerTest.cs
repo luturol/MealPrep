@@ -54,44 +54,13 @@ namespace TestMealPrep.Controller
             var meal = new Meal()
             {
 
-                MealDate = mealDate,
-                MealID = id,
-                User = user
+                Date = mealDate,
+                Id = id,
+                User = user,
+                Foods = new List<Food>() { food }
             };
 
-            List<MealFood> mealFoods = new List<MealFood>();
-            mealFoods.Add(new MealFood()
-            {
-                Amount = 150,
-                Food = food,
-                Meal = meal,
-                Weigth = "g"
-            });
-
-            meal.MealFoods = mealFoods;
             return meal;
-        }
-
-        private MealController CreateMealControllerWithMeal()
-        {
-            MealController mealController = CreateMealController();
-
-            Meal meal = CreateMeal(0, USER, DateTime.Today);
-
-            List<MealFood> mealFoods = new List<MealFood>();
-            mealFoods.Add(new MealFood()
-            {
-                Amount = 150,
-                Food = FOOD,
-                Meal = meal,
-                Weigth = "g"
-            });
-
-            meal.MealFoods = mealFoods;
-
-            mealController.AddMeal(meal, USER);
-
-            return mealController;
         }
 
         [TestInitialize]
@@ -103,42 +72,31 @@ namespace TestMealPrep.Controller
         [TestMethod]
         public void ShouldBeAbleToAddNewMeal()
         {
-            Food food = new Food()
-            {
-                FoodID = 1,
-                Name = "Chicken",
-                Amount = 100,
-                Calories = 100,
-                Carbs = 100,
-                Fat = 100,
-                Protein = 100,
-                FoodVitamins = new List<FoodVitamin>()
-            };
-            MealController mealController = CreateMealController();
+            //Arrange            
+            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), new FoodController(new FakeFoodDao()));
+            var meal = CreateMeal(0, USER, DateTime.Today);
+            mealController.Stub(x => x.GetAllMeals(Arg<User>.Is.Anything)).Return(new List<Meal>());
 
-            Meal meal = CreateMeal(0, USER, DateTime.Today);
+            //Act
+            bool actual = mealController.AddMeal(meal);
 
-            List<MealFood> mealFoods = new List<MealFood>();
-            mealFoods.Add(new MealFood()
-            {
-                Amount = 150,
-                Food = food,
-                Meal = meal,
-                Weigth = "g"
-            });
-
-            meal.MealFoods = mealFoods;
-
-            Assert.IsTrue(mealController.AddMeal(meal, USER));
+            //Assert
+            Assert.IsTrue(actual);
         }
 
         [TestMethod]
         public void ShouldBeAbleToCalculateMacrosFromMeals()
         {
-            MealController mealController = CreateMealControllerWithMeal();
+            //Arrange
+            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), new FoodController(new FakeFoodDao()));
+            var meal = CreateMeal(0, USER, DateTime.Today);
+            mealController.Stub(x => x.GetAllMeals(Arg<User>.Is.Anything)).Return(new List<Meal>() { meal });
 
+            //Act
             FullMeal fullMeal = mealController.GetMealWithFoods(USER).Find(e => e.MealId == 0);
-            Assert.AreEqual(fullMeal.Calories, 150);
+
+            //Assert
+            Assert.AreEqual(fullMeal.Calories, 100);
         }
 
         [TestMethod]
@@ -152,7 +110,7 @@ namespace TestMealPrep.Controller
             var newMeal = CreateMeal(0, USER, DateTime.Today.AddDays(1));
 
             //Act
-            bool expected = mealController.AddMeal(meal, USER);
+            bool expected = mealController.AddMeal(meal);
         }
     }
 }

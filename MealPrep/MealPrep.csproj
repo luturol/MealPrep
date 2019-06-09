@@ -80,7 +80,6 @@
     <Compile Include="Model\FoodVitamin.cs" />
     <Compile Include="Model\FullMeal.cs" />
     <Compile Include="Model\Meal.cs" />
-    <Compile Include="Model\MealFood.cs" />
     <Compile Include="Model\TitleFactory.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Vitamin.cs" />
