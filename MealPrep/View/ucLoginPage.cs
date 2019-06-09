@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
+using MealPrep.Interfaces;
 
 namespace MealPrep.View
 {
-    public partial class ucLoginPage : UserControl
+    public partial class ucLoginPage : UserControl, IView
     {
         private UserController userController;
         private MealController mealController;
@@ -29,7 +30,7 @@ namespace MealPrep.View
             Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             panelLogin.Controls.Add(new ucLogin(userController, mealController, foodController, vitaminController));
             panelAddUser.Controls.Add(new ucAddUser(userController));

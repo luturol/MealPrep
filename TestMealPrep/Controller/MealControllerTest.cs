@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using MealPrep.Controller;
+using MealPrep.Interfaces;
 using MealPrep.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhino.Mocks;
 using TestMealPrep.Dao;
 
 namespace TestMealPrep.Controller
@@ -35,16 +37,46 @@ namespace TestMealPrep.Controller
             return mealController;
         }
 
+        private Meal CreateMeal(int id, User user, DateTime mealDate)
+        {
+            Food food = new Food()
+            {
+                FoodID = 1,
+                Name = "Chicken",
+                Amount = 100,
+                Calories = 100,
+                Carbs = 100,
+                Fat = 100,
+                Protein = 100,
+                FoodVitamins = new List<FoodVitamin>()
+            };
+
+            var meal = new Meal()
+            {
+
+                MealDate = mealDate,
+                MealID = id,
+                User = user
+            };
+
+            List<MealFood> mealFoods = new List<MealFood>();
+            mealFoods.Add(new MealFood()
+            {
+                Amount = 150,
+                Food = food,
+                Meal = meal,
+                Weigth = "g"
+            });
+
+            meal.MealFoods = mealFoods;
+            return meal;
+        }
+
         private MealController CreateMealControllerWithMeal()
         {
             MealController mealController = CreateMealController();
 
-            Meal meal = new Meal()
-            {
-                MealDate = DateTime.Today,
-                MealID = 0,
-                User = USER
-            };
+            Meal meal = CreateMeal(0, USER, DateTime.Today);
 
             List<MealFood> mealFoods = new List<MealFood>();
             mealFoods.Add(new MealFood()
@@ -62,6 +94,12 @@ namespace TestMealPrep.Controller
             return mealController;
         }
 
+        [TestInitialize]
+        public void Initialize()
+        {
+            var controller = MockRepository.GenerateStub<IMealController>();
+        }
+
         [TestMethod]
         public void ShouldBeAbleToAddNewMeal()
         {
@@ -77,13 +115,9 @@ namespace TestMealPrep.Controller
                 FoodVitamins = new List<FoodVitamin>()
             };
             MealController mealController = CreateMealController();
-            Meal meal = new Meal()
-            {
-                MealDate = DateTime.Today,
-                MealID = 0,
-                User = USER
-            };
-           
+
+            Meal meal = CreateMeal(0, USER, DateTime.Today);
+
             List<MealFood> mealFoods = new List<MealFood>();
             mealFoods.Add(new MealFood()
             {
@@ -97,14 +131,28 @@ namespace TestMealPrep.Controller
 
             Assert.IsTrue(mealController.AddMeal(meal, USER));
         }
-       
+
         [TestMethod]
         public void ShouldBeAbleToCalculateMacrosFromMeals()
         {
             MealController mealController = CreateMealControllerWithMeal();
-           
+
             FullMeal fullMeal = mealController.GetMealWithFoods(USER).Find(e => e.MealId == 0);
             Assert.AreEqual(fullMeal.Calories, 150);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Error! Meal already exist.")]
+        public void ShouldBeAbleToUpdateMealGivingMealWithExistingID()
+        {
+            //Arrange
+            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), new FoodController(new FakeFoodDao()));
+            var meal = CreateMeal(0, USER, DateTime.Today);
+            mealController.Stub(x => x.GetAllMeals(Arg<User>.Is.Anything)).Return(new List<Meal>() { meal });
+            var newMeal = CreateMeal(0, USER, DateTime.Today.AddDays(1));
+
+            //Act
+            bool expected = mealController.AddMeal(meal, USER);
         }
     }
 }

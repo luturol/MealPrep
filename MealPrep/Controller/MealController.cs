@@ -68,7 +68,7 @@ namespace MealPrep.Controller
             };
         }
 
-        public List<Meal> GetAllMeals(User user)
+        public virtual List<Meal> GetAllMeals(User user)
         {
             return mealDao.GetAllMealsFromUser(user);
         }

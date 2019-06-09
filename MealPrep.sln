@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MealPrep", "MealPrep\MealPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMealPrep", "TestMealPrep\TestMealPrep.csproj", "{40CFA0A0-9B6A-4EE7-B699-716EF3C5828B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{4DB12A00-3B93-4E6E-8504-0631819B3D3F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{40CFA0A0-9B6A-4EE7-B699-716EF3C5828B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40CFA0A0-9B6A-4EE7-B699-716EF3C5828B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40CFA0A0-9B6A-4EE7-B699-716EF3C5828B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DB12A00-3B93-4E6E-8504-0631819B3D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DB12A00-3B93-4E6E-8504-0631819B3D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DB12A00-3B93-4E6E-8504-0631819B3D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DB12A00-3B93-4E6E-8504-0631819B3D3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

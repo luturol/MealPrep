@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Login
+namespace MealPrep.Interfaces
 {
-    public class Class1
+    public interface IView
     {
+        void Initialize();
     }
 }

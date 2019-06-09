@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Model;
 using MealPrep.Useful;
+using MealPrep.Interfaces;
 
 namespace MealPrep.View
 {
-    public partial class ucAddVitamin : UserControl
+    public partial class ucAddVitamin : UserControl, IView
     {
         private VitaminController controller;
         private Vitamin vitamin;
@@ -36,7 +37,7 @@ namespace MealPrep.View
             Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             if (vitamin != null)
             {

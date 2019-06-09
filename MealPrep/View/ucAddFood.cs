@@ -11,10 +11,11 @@ using MealPrep.Controller;
 using System.Text.RegularExpressions;
 using MealPrep.Model;
 using MealPrep.Useful;
+using MealPrep.Interfaces;
 
 namespace MealPrep.View
 {
-    public partial class ucAddFood : UserControl
+    public partial class ucAddFood : UserControl, IView
     {
         private FoodController foodController;
         private VitaminController vitaminController;
@@ -37,7 +38,7 @@ namespace MealPrep.View
             Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             InitializeComboBox();
             gcVitamins.DataSource = TableFoodVitamin();
