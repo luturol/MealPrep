@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MealPrep.Properties
-{
-
-
+namespace MealPrep.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,52 +19,107 @@ namespace MealPrep.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MealPrep.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Food already exist in this meal..
+        /// </summary>
+        internal static string ErrorFoodAlreadyExistInMeal {
+            get {
+                return ResourceManager.GetString("ErrorFoodAlreadyExistInMeal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! It&apos;s necessary to fill amount of food.
+        /// </summary>
+        internal static string ErrorNecessaryToFillAmountOfFood {
+            get {
+                return ResourceManager.GetString("ErrorNecessaryToFillAmountOfFood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Necessary to pick a date for the meal..
+        /// </summary>
+        internal static string ErrorNecessaryToPickADateForMeal {
+            get {
+                return ResourceManager.GetString("ErrorNecessaryToPickADateForMeal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! It&apos;s necessary to select a food..
+        /// </summary>
+        internal static string ErrorNecessaryToSelectAFood {
+            get {
+                return ResourceManager.GetString("ErrorNecessaryToSelectAFood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro! It&apos;s necessary to select a weight of the food.
+        /// </summary>
+        internal static string ErrorNecessaryToSelectWeightOfFood {
+            get {
+                return ResourceManager.GetString("ErrorNecessaryToSelectWeightOfFood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Need to add a food to the meal..
+        /// </summary>
+        internal static string ErrorNeedToAddFoodToMeal {
+            get {
+                return ResourceManager.GetString("ErrorNeedToAddFoodToMeal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal added with success!.
+        /// </summary>
+        internal static string MealAddedWithSuccess {
+            get {
+                return ResourceManager.GetString("MealAddedWithSuccess", resourceCulture);
             }
         }
     }
