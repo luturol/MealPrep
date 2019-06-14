@@ -120,6 +120,18 @@
   <data name="ErrorFoodAlreadyExistInMeal" xml:space="preserve">
     <value>Error! Food already exist in this meal.</value>
   </data>
+  <data name="ErrorItsNecessaryToFillAmountOfVitamin" xml:space="preserve">
+    <value>Error! It's necessary to fill amount of vitamin</value>
+  </data>
+  <data name="ErrorItsNecessaryToFillWeightOfVitamin" xml:space="preserve">
+    <value>Erro! It's necessary to select a weight of the vitamin</value>
+  </data>
+  <data name="ErrorItsNecessaryToSelectAVitamin" xml:space="preserve">
+    <value>Error! It's necessary to select a vitamin.</value>
+  </data>
+  <data name="ErrorNecessaryToFillAllFieldsCorrectly" xml:space="preserve">
+    <value>It's necessary to full fill all fields correctly.</value>
+  </data>
   <data name="ErrorNecessaryToFillAmountOfFood" xml:space="preserve">
     <value>Error! It's necessary to fill amount of food</value>
   </data>
@@ -134,6 +146,12 @@
   </data>
   <data name="ErrorNeedToAddFoodToMeal" xml:space="preserve">
     <value>Error! Need to add a food to the meal.</value>
+  </data>
+  <data name="ErrorVitaminAleradyExisInThisFood" xml:space="preserve">
+    <value>Error! Vitamin already exist in this food.</value>
+  </data>
+  <data name="FoodAddedWithSuccess" xml:space="preserve">
+    <value>Food adde with success</value>
   </data>
   <data name="MealAddedWithSuccess" xml:space="preserve">
     <value>Meal added with success!</value>

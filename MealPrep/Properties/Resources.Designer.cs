@@ -70,6 +70,42 @@ namespace MealPrep.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error! It&apos;s necessary to fill amount of vitamin.
+        /// </summary>
+        internal static string ErrorItsNecessaryToFillAmountOfVitamin {
+            get {
+                return ResourceManager.GetString("ErrorItsNecessaryToFillAmountOfVitamin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro! It&apos;s necessary to select a weight of the vitamin.
+        /// </summary>
+        internal static string ErrorItsNecessaryToFillWeightOfVitamin {
+            get {
+                return ResourceManager.GetString("ErrorItsNecessaryToFillWeightOfVitamin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! It&apos;s necessary to select a vitamin..
+        /// </summary>
+        internal static string ErrorItsNecessaryToSelectAVitamin {
+            get {
+                return ResourceManager.GetString("ErrorItsNecessaryToSelectAVitamin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It&apos;s necessary to full fill all fields correctly..
+        /// </summary>
+        internal static string ErrorNecessaryToFillAllFieldsCorrectly {
+            get {
+                return ResourceManager.GetString("ErrorNecessaryToFillAllFieldsCorrectly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error! It&apos;s necessary to fill amount of food.
         /// </summary>
         internal static string ErrorNecessaryToFillAmountOfFood {
@@ -111,6 +147,24 @@ namespace MealPrep.Properties {
         internal static string ErrorNeedToAddFoodToMeal {
             get {
                 return ResourceManager.GetString("ErrorNeedToAddFoodToMeal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Vitamin already exist in this food..
+        /// </summary>
+        internal static string ErrorVitaminAleradyExisInThisFood {
+            get {
+                return ResourceManager.GetString("ErrorVitaminAleradyExisInThisFood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Food adde with success.
+        /// </summary>
+        internal static string FoodAddedWithSuccess {
+            get {
+                return ResourceManager.GetString("FoodAddedWithSuccess", resourceCulture);
             }
         }
         

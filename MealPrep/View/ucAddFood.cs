@@ -12,19 +12,14 @@ using System.Text.RegularExpressions;
 using MealPrep.Model;
 using MealPrep.Useful;
 using MealPrep.Interfaces;
+using MealPrep.Properties;
 
 namespace MealPrep.View
 {
     public partial class ucAddFood : UserControl, IView
     {
         private FoodController foodController;
-        private VitaminController vitaminController;
-        private const String ERROR_NECESSARY_FULL_FILL_CORRECTLY = "It's necessary to full fill all fields correctly.";
-        private const String ERROR_NECESSARY_TO_SELECT_A_VITAMIN = "Error! It's necessary to select a vitamin.";
-        private const String ERROR_VITAMIN_ALREADY_EXIST_IN_FOOD = "Error! Vitamin already exist in this food.";
-        private const String ERRO_NECESSARY_TO_FILL_AMOUNT_OF_VITAMIN = "Error! It's necessary to fill amount of vitamin";
-        private const String ERRO_NECESSARY_SELECT_WEIGHT_OF_VITAMIN = "Erro! It's necessary to select a weight of the vitamin";
-        private const String MESSAGE_FODD_ADD_WITH_SUCCESS = "Food add with success";
+        private VitaminController vitaminController;                                       
         private const String COLUMN_FOODVITAMIN_ID = "ID";
         private const String COLUMN_FOOD_VITAMIN_NAME = "NAME";
         private const String COLUMN_FOODVITAMIN_AMOUNT = "AMOUNT";
@@ -105,7 +100,7 @@ namespace MealPrep.View
             }
             else
             {
-                throw new Exception(ERROR_NECESSARY_FULL_FILL_CORRECTLY);
+                throw new Exception(Resources.ErrorNecessaryToFillAllFieldsCorrectly);
             }
         }
 
@@ -131,7 +126,7 @@ namespace MealPrep.View
                 f.FoodVitamins = GetAllVitamins(f);
                 if (foodController.AddFood(f) && foodController.AddFoodVitamin(f.FoodVitamins))
                 {
-                    MessageBoxInformationType(MESSAGE_FODD_ADD_WITH_SUCCESS);
+                    MessageBoxInformationType(Resources.FoodAddedWithSuccess);
                 }
             }
         }
@@ -163,7 +158,7 @@ namespace MealPrep.View
             {
                 if (!ValidateFoodVitamin())
                 {
-                    throw new Exception(ERROR_NECESSARY_TO_SELECT_A_VITAMIN);
+                    throw new Exception(Resources.ErrorItsNecessaryToSelectAVitamin);
                 }
                 else
                 {
@@ -182,7 +177,7 @@ namespace MealPrep.View
             DataTable tableVitamin = (DataTable)gcVitamins.DataSource;
             if (tableVitamin.Select(COLUMN_FOODVITAMIN_ID + "=" + vitamin[0].Trim()).Count() > 0)
             {
-                throw new Exception(ERROR_VITAMIN_ALREADY_EXIST_IN_FOOD);
+                throw new Exception(Resources.ErrorVitaminAleradyExisInThisFood);
             }
             else
             {
@@ -198,15 +193,15 @@ namespace MealPrep.View
         {
             if (cbVitamins.Text.Length == 0)
             {
-                throw new Exception(ERROR_NECESSARY_TO_SELECT_A_VITAMIN);
+                throw new Exception(Resources.ErrorItsNecessaryToSelectAVitamin);
             }
             else if (txtAmountVitamin.Text.Length == 0)
             {
-                throw new Exception(ERRO_NECESSARY_TO_FILL_AMOUNT_OF_VITAMIN);
+                throw new Exception(Resources.ErrorItsNecessaryToFillAmountOfVitamin);
             }
             else if (cbWeightVitamin.Text.Length == 0)
             {
-                throw new Exception(ERRO_NECESSARY_SELECT_WEIGHT_OF_VITAMIN);
+                throw new Exception(Resources.ErrorItsNecessaryToFillWeightOfVitamin);
             }
             else
             {
