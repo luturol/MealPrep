@@ -11,6 +11,6 @@ namespace MealPrep.Model
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public User User { get; set; }        
-        public List<Food> Foods { get; set; }
+        public List<MealFood> Foods { get; set; }
     }
 }

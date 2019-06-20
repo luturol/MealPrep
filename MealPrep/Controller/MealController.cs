@@ -14,7 +14,7 @@ namespace MealPrep.Controller
     {
         private IMealDao mealDao;
         private FoodController foodController;
-        private const String ERROR_MEAL_ALREADY_EXIST = "Error! Meal already exist.";
+        private const string ERROR_MEAL_ALREADY_EXIST = "Error! Meal already exist.";
 
         public MealController(IMealDao mealDao, FoodController foodController)
         {
@@ -42,22 +42,23 @@ namespace MealPrep.Controller
         private FullMeal CreateFullMeal(Meal meal)
         {
             var amount = meal.Foods.Sum(a => a.Amount);
+            List<int> foodIds = meal.Foods.Select(e => e.FoodId).ToList();
+            List<Food> foods = foodController.GetAllFoods().FindAll(food => foodIds.Contains(food.FoodID));
             double calories = 0;
             double carbs = 0;
             double protein = 0;
             double fat = 0;
-            foreach (var f in meal.Foods)
+            foreach (var food in foods)
             {
-                calories += UsefulAlgorithms.By3Rule(f.Amount, f.Calories, f.Amount);
-                carbs += UsefulAlgorithms.By3Rule(f.Amount, f.Carbs, f.Amount);
-                protein += UsefulAlgorithms.By3Rule(f.Amount, f.Protein, f.Amount);
-                fat += UsefulAlgorithms.By3Rule(f.Amount, f.Fat, f.Amount);
+                calories += UsefulAlgorithms.By3Rule(food.Amount, food.Calories, food.Amount);
+                carbs += UsefulAlgorithms.By3Rule(food.Amount, food.Carbs, food.Amount);
+                protein += UsefulAlgorithms.By3Rule(food.Amount, food.Protein, food.Amount);
+                fat += UsefulAlgorithms.By3Rule(food.Amount, food.Fat, food.Amount);
             }
 
             return new FullMeal()
             {
                 Amount = amount,
-                Foods = meal.Foods,
                 MealId = meal.Id,
                 Calories = calories,
                 Carbs = carbs,

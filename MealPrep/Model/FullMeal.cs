@@ -11,7 +11,6 @@ namespace MealPrep.Model
         public int MealId { get; set; }
         public double Amount { get; set; }
         public string Weigth { get; set; }
-        public List<Food> Foods { get; set; }
         public double Calories { get; set; }
         public double Carbs { get; set; }
         public double Fat { get; set; }

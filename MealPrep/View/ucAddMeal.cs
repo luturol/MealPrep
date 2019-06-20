@@ -174,21 +174,20 @@ namespace MealPrep.View
             return meal.Rows.Count > 0;
         }
 
-        private List<Food> GetAllFoods(int mealId)
+        private List<MealFood> GetAllFoods(int mealId)
         {
-            List<Food> mealFoods = new List<Food>();
+            List<MealFood> mealFoods = new List<MealFood>();
             DataTable tableFoods = (DataTable)gcFoods.DataSource;
             foreach (DataRow food in tableFoods.Rows)
-            {
-                mealFoods.Add(foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())));
-                //mealFoods.Add(new Food
-                //{
-                //    Food = foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())),
-                //Meal = mealController.GetAllMeals(user).Single(m => m.MealID == mealId),
-                //    Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
-                //    Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
-                //});
+            {                
+                mealFoods.Add(new MealFood()
+                {
+                    FoodId = int.Parse(food[COLUMN_FOOD_ID].ToString()),
+                    Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
+                    Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
+                });
             }
+
             return mealFoods;
         }
 

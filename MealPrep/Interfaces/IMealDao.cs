@@ -13,6 +13,6 @@ namespace MealPrep.Interfaces
         bool AddMeal(Meal meal);        
         int GetNextId();
         bool AddMealFood(Meal meal);        
-        List<Food> GetMealFoods(Meal meal);
+        List<MealFood> GetMealFoods(Meal meal);
     }
 }
