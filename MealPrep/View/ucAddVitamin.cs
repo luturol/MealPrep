@@ -11,16 +11,14 @@ using MealPrep.Controller;
 using MealPrep.Model;
 using MealPrep.Useful;
 using MealPrep.Interfaces;
+using MealPrep.Properties;
 
 namespace MealPrep.View
 {
     public partial class ucAddVitamin : UserControl, IView
     {
         private VitaminController controller;
-        private Vitamin vitamin;
-        private const String MESSAGE_VITAMIN_ADD_WITH_SUCCESS = "Vitamin add with success.";
-        private const String ERROR_NECESSARY_TO_FULL_FILL_NAME = "Error! Necessary to fill the name field.";
-       
+        private Vitamin vitamin;       
 
         public ucAddVitamin(VitaminController controller)
         {
@@ -70,12 +68,12 @@ namespace MealPrep.View
                     if (controller.AddVitamin(new Vitamin() { Name = txtVitaminName.Text }))
                     {
                         PopulateGrid();
-                        MessageBox.Show(MESSAGE_VITAMIN_ADD_WITH_SUCCESS, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(Resources.VitaminAddedWithSuccess, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    throw new Exception(ERROR_NECESSARY_TO_FULL_FILL_NAME);
+                    throw new Exception(Resources.ErrorNeedToFillVitaminName);
                 }
             }
             catch (Exception ex)
@@ -91,8 +89,6 @@ namespace MealPrep.View
             Action action = () => gcVitamins.DataSource = controller.GetTableAllVitamins();
             gcVitamins.Invoke(action);
             progressBar.Close();
-        }
-
-
+        }        
     }
 }

@@ -147,13 +147,31 @@
   <data name="ErrorNeedToAddFoodToMeal" xml:space="preserve">
     <value>Error! Need to add a food to the meal.</value>
   </data>
+  <data name="ErrorNeedToFillVitaminName" xml:space="preserve">
+    <value>Error! Necessary to fill the vitamin name field.</value>
+  </data>
+  <data name="ErrorNeedToFullFillLoginAndPassword" xml:space="preserve">
+    <value>Error! Need to full fill login and password.</value>
+  </data>
+  <data name="ErrorNeedToFullFillTheUserForm" xml:space="preserve">
+    <value>Error! Need to full fill the User form.</value>
+  </data>
   <data name="ErrorVitaminAleradyExisInThisFood" xml:space="preserve">
     <value>Error! Vitamin already exist in this food.</value>
+  </data>
+  <data name="ErrorWrongUserOrPassword" xml:space="preserve">
+    <value>Error! Wrong User or Password</value>
   </data>
   <data name="FoodAddedWithSuccess" xml:space="preserve">
     <value>Food adde with success</value>
   </data>
   <data name="MealAddedWithSuccess" xml:space="preserve">
     <value>Meal added with success!</value>
+  </data>
+  <data name="VitaminAddedWithSuccess" xml:space="preserve">
+    <value>Vitamin add with success.</value>
+  </data>
+  <data name="WelcomeToMealPrep" xml:space="preserve">
+    <value>Welcome to MealPrep!</value>
   </data>
 </root>

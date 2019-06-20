@@ -151,11 +151,47 @@ namespace MealPrep.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error! Necessary to fill the vitamin name field..
+        /// </summary>
+        internal static string ErrorNeedToFillVitaminName {
+            get {
+                return ResourceManager.GetString("ErrorNeedToFillVitaminName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Need to full fill login and password..
+        /// </summary>
+        internal static string ErrorNeedToFullFillLoginAndPassword {
+            get {
+                return ResourceManager.GetString("ErrorNeedToFullFillLoginAndPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Need to full fill the User form..
+        /// </summary>
+        internal static string ErrorNeedToFullFillTheUserForm {
+            get {
+                return ResourceManager.GetString("ErrorNeedToFullFillTheUserForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error! Vitamin already exist in this food..
         /// </summary>
         internal static string ErrorVitaminAleradyExisInThisFood {
             get {
                 return ResourceManager.GetString("ErrorVitaminAleradyExisInThisFood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error! Wrong User or Password.
+        /// </summary>
+        internal static string ErrorWrongUserOrPassword {
+            get {
+                return ResourceManager.GetString("ErrorWrongUserOrPassword", resourceCulture);
             }
         }
         
@@ -174,6 +210,24 @@ namespace MealPrep.Properties {
         internal static string MealAddedWithSuccess {
             get {
                 return ResourceManager.GetString("MealAddedWithSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vitamin add with success..
+        /// </summary>
+        internal static string VitaminAddedWithSuccess {
+            get {
+                return ResourceManager.GetString("VitaminAddedWithSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to MealPrep!.
+        /// </summary>
+        internal static string WelcomeToMealPrep {
+            get {
+                return ResourceManager.GetString("WelcomeToMealPrep", resourceCulture);
             }
         }
     }
