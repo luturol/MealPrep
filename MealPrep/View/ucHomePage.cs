@@ -32,11 +32,8 @@ namespace MealPrep.View
 
         public void Initialize()
         {
-            List<FullMeal> meals = mealController.GetMealWithFoods(user).OrderByDescending(a => a.Date).ToList();
-            foreach(FullMeal meal in meals)
-            {
-                panelMeal.Controls.Add(new ucRowMeal(meal.MealId, meal.Date.ToShortDateString(), meal.Calories.ToString(), meal.Carbs.ToString(), meal.Protein.ToString(), meal.Fat.ToString()));
-            }
+            myProgressBar.Style = ProgressBarStyle.Marquee;
+            bgPrepareFullMeals.RunWorkerAsync();
         }
 
         private void newFoodToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,6 +52,41 @@ namespace MealPrep.View
         {
             FormAuxiliary addMeal = new FormAuxiliary(new ucAddMeal(foodController, mealController, user));
             addMeal.ShowDialog();
+        }
+
+        private delegate void MyDelegate();
+        private void bgPrepareFullMeals_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Action showProgressBar = () => myProgressBar.Show();
+            myProgressBar.Invoke(showProgressBar);
+
+            List<FullMeal> meals = mealController.GetMealWithFoods(user).OrderByDescending(a => a.Date).ToList();            
+            foreach (FullMeal meal in meals)
+            {
+                if (panelMeal.InvokeRequired)
+                {
+                    this.Invoke((MyDelegate)delegate
+                    {
+                        AddToPanelMeal(meal);
+                    });
+                }                    
+            }
+        }
+
+        private void bgPrepareFullMeals_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Action hideProgressBar = () => myProgressBar.Hide();
+            myProgressBar.Invoke(hideProgressBar);
+        }
+
+        private void AddToPanelMeal(FullMeal fullMeal)
+        {
+            panelMeal.Controls.Add(new ucRowMeal(fullMeal.MealId,
+                fullMeal.Date.ToShortDateString(),
+                fullMeal.Calories.ToString(),
+                fullMeal.Carbs.ToString(),
+                fullMeal.Protein.ToString(),
+                fullMeal.Fat.ToString()));
         }
     }
 }

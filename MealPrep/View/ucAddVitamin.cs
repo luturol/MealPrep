@@ -84,11 +84,8 @@ namespace MealPrep.View
 
         private void bwProcessVitamin_DoWork(object sender, DoWorkEventArgs e)
         {
-            FormAuxiliary progressBar = new FormAuxiliary(new ucProgressBar());
-            progressBar.Show();
             Action action = () => gcVitamins.DataSource = controller.GetTableAllVitamins();
             gcVitamins.Invoke(action);
-            progressBar.Close();
         }        
     }
 }

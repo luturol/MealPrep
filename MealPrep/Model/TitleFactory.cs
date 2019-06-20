@@ -29,10 +29,10 @@ namespace MealPrep.Model
             {
                 return TITLE_NEW_VITAMIN;
             }
-            else if (type.Equals(typeof(ucProgressBar)))
-            {
-                return TITLE_PROGRESS_BAR;
-            }            
+            //else if (type.Equals(typeof(ucProgressBar)))
+            //{
+            //    return TITLE_PROGRESS_BAR;
+            //}            
             else
             {
                 throw new Exception(ERROR_TITLE_NOT_FOUND);

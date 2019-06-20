@@ -115,12 +115,6 @@
     <Compile Include="View\ucAddMeal.Designer.cs">
       <DependentUpon>ucAddMeal.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ucProgressBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\ucProgressBar.Designer.cs">
-      <DependentUpon>ucProgressBar.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\ucAddFood.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -182,9 +176,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucAddMeal.resx">
       <DependentUpon>ucAddMeal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\ucProgressBar.resx">
-      <DependentUpon>ucProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucAddFood.resx">
       <DependentUpon>ucAddFood.cs</DependentUpon>

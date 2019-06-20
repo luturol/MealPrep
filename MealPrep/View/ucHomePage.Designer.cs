@@ -38,6 +38,8 @@
             this.addVitaminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgPrepareFullMeals = new System.ComponentModel.BackgroundWorker();
+            this.myProgressBar = new System.Windows.Forms.ProgressBar();
             this.panelScroll.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -127,10 +129,24 @@
             this.addMealToolStripMenuItem.Text = "Add Meal";
             this.addMealToolStripMenuItem.Click += new System.EventHandler(this.addMealToolStripMenuItem_Click);
             // 
+            // bgPrepareFullMeals
+            // 
+            this.bgPrepareFullMeals.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgPrepareFullMeals_DoWork);
+            this.bgPrepareFullMeals.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgPrepareFullMeals_RunWorkerCompleted);
+            // 
+            // myProgressBar
+            // 
+            this.myProgressBar.Location = new System.Drawing.Point(327, 66);
+            this.myProgressBar.Name = "myProgressBar";
+            this.myProgressBar.Size = new System.Drawing.Size(100, 23);
+            this.myProgressBar.TabIndex = 0;
+            this.myProgressBar.Visible = false;
+            // 
             // ucHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.myProgressBar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelScroll);
             this.Controls.Add(this.menuStrip1);
@@ -156,5 +172,7 @@
         private System.Windows.Forms.ToolStripMenuItem mealToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMealToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel panelMeal;
+        private System.ComponentModel.BackgroundWorker bgPrepareFullMeals;
+        private System.Windows.Forms.ProgressBar myProgressBar;
     }
 }
