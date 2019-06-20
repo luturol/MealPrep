@@ -39,16 +39,11 @@ namespace TestMealPrep.Controller
 
         private Meal CreateMeal(int id, User user, DateTime mealDate)
         {
-            Food food = new Food()
+            MealFood mealFood = new MealFood()
             {
-                FoodID = 1,
-                Name = "Chicken",
+                FoodId = 1,
                 Amount = 100,
-                Calories = 100,
-                Carbs = 100,
-                Fat = 100,
-                Protein = 100,
-                FoodVitamins = new List<FoodVitamin>()
+                Weigth = "g"
             };
 
             var meal = new Meal()
@@ -57,7 +52,7 @@ namespace TestMealPrep.Controller
                 Date = mealDate,
                 Id = id,
                 User = user,
-                Foods = new List<Food>() { food }
+                Foods = new List<MealFood>() { mealFood }
             };
 
             return meal;
@@ -88,7 +83,21 @@ namespace TestMealPrep.Controller
         public void ShouldBeAbleToCalculateMacrosFromMeals()
         {
             //Arrange
-            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), new FoodController(new FakeFoodDao()));
+            var food = new Food()
+            {
+                FoodID = 1,
+                Amount = 100,
+                Calories = 100,
+                Carbs = 14,
+                Fat = 9,
+                FoodVitamins = new List<FoodVitamin>(),
+                Name = "Chicken",
+                Protein = 13
+            };
+            var FoodController = new FoodController(new FakeFoodDao());
+            FoodController.AddFood(food);
+            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), FoodController);
+
             var meal = CreateMeal(0, USER, DateTime.Today);
             mealController.Stub(x => x.GetAllMeals(Arg<User>.Is.Anything)).Return(new List<Meal>() { meal });
 

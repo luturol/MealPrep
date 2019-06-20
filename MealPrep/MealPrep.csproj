@@ -75,6 +75,7 @@
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Controller\VitaminController.cs" />
     <Compile Include="Interfaces\IView.cs" />
+    <Compile Include="Model\MealFood.cs" />
     <Compile Include="Repository\ConnectionPostgres.cs" />
     <Compile Include="Repository\FoodDao.cs" />
     <Compile Include="Repository\MealDao.cs" />

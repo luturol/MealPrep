@@ -45,7 +45,7 @@ namespace TestMealPrep.Dao
             return fakeDB.Values.ToList();
         }
 
-        public List<Food> GetMealFoods(Meal meal)
+        public List<MealFood> GetMealFoods(Meal meal)
         {
             return fakeDB.Values.SingleOrDefault(m => m.Id == meal.Id).Foods;
         }
