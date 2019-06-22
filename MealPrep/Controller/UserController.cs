@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MealPrep.Properties;
 
 namespace MealPrep.Controller
 {
     public class UserController
     {        
-        private IUserDao dao;
-        private const String ERROR_USER_ALREADY_EXIST = "Error! User already exists.";
+        private IUserDao dao;        
 
         public UserController(IUserDao dao)
         {
@@ -27,7 +27,7 @@ namespace MealPrep.Controller
             }
             else
             {
-                throw new Exception(ERROR_USER_ALREADY_EXIST);
+                throw new Exception(Resources.ErrorUserAlreadyExist);
             }
         }
 

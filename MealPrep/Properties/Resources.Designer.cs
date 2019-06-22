@@ -106,6 +106,15 @@ namespace MealPrep.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error! Meal already exist..
+        /// </summary>
+        internal static string ErrorMealAlreadyExist {
+            get {
+                return ResourceManager.GetString("ErrorMealAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It&apos;s necessary to full fill all fields correctly..
         /// </summary>
         internal static string ErrorNecessaryToFillAllFieldsCorrectly {
@@ -187,11 +196,29 @@ namespace MealPrep.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error! User already exists..
+        /// </summary>
+        internal static string ErrorUserAlreadyExist {
+            get {
+                return ResourceManager.GetString("ErrorUserAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error! Vitamin already exist in this food..
         /// </summary>
         internal static string ErrorVitaminAleradyExisInThisFood {
             get {
                 return ResourceManager.GetString("ErrorVitaminAleradyExisInThisFood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vitamin already exist if this id {0} or this name {1}.
+        /// </summary>
+        internal static string ErrorVitaminAlreadyExistWithThisIdOrThisName {
+            get {
+                return ResourceManager.GetString("ErrorVitaminAlreadyExistWithThisIdOrThisName", resourceCulture);
             }
         }
         

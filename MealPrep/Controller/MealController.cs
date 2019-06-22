@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MealPrep.Properties;
 
 namespace MealPrep.Controller
 {
@@ -14,7 +15,6 @@ namespace MealPrep.Controller
     {
         private IMealDao mealDao;
         private FoodController foodController;
-        private const string ERROR_MEAL_ALREADY_EXIST = "Error! Meal already exist.";
 
         public MealController(IMealDao mealDao, FoodController foodController)
         {
@@ -26,7 +26,7 @@ namespace MealPrep.Controller
         {
             if (GetAllMeals(meal.User).Exists(m => m.Id == meal.Id))
             {
-                throw new Exception(ERROR_MEAL_ALREADY_EXIST);
+                throw new Exception(Resources.ErrorMealAlreadyExist);
             }
             else
             {

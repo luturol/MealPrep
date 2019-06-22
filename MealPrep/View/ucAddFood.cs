@@ -20,10 +20,10 @@ namespace MealPrep.View
     {
         private FoodController foodController;
         private VitaminController vitaminController;                                       
-        private const String COLUMN_FOODVITAMIN_ID = "ID";
-        private const String COLUMN_FOOD_VITAMIN_NAME = "NAME";
-        private const String COLUMN_FOODVITAMIN_AMOUNT = "AMOUNT";
-        private const String COLUMN_FOODVITAMIN_WEIGHT = "WEIGHT";
+        private const string COLUMN_FOODVITAMIN_ID = "ID";
+        private const string COLUMN_FOOD_VITAMIN_NAME = "NAME";
+        private const string COLUMN_FOODVITAMIN_AMOUNT = "AMOUNT";
+        private const string COLUMN_FOODVITAMIN_WEIGHT = "WEIGHT";
 
         public ucAddFood(FoodController foodController, VitaminController vitaminController)
         {

@@ -132,6 +132,9 @@
   <data name="ErrorItsNecessaryToSelectAVitamin" xml:space="preserve">
     <value>Error! It's necessary to select a vitamin.</value>
   </data>
+  <data name="ErrorMealAlreadyExist" xml:space="preserve">
+    <value>Error! Meal already exist.</value>
+  </data>
   <data name="ErrorNecessaryToFillAllFieldsCorrectly" xml:space="preserve">
     <value>It's necessary to full fill all fields correctly.</value>
   </data>
@@ -159,8 +162,14 @@
   <data name="ErrorNeedToFullFillTheUserForm" xml:space="preserve">
     <value>Error! Need to full fill the User form.</value>
   </data>
+  <data name="ErrorUserAlreadyExist" xml:space="preserve">
+    <value>Error! User already exists.</value>
+  </data>
   <data name="ErrorVitaminAleradyExisInThisFood" xml:space="preserve">
     <value>Error! Vitamin already exist in this food.</value>
+  </data>
+  <data name="ErrorVitaminAlreadyExistWithThisIdOrThisName" xml:space="preserve">
+    <value>Vitamin already exist if this id {0} or this name {1}</value>
   </data>
   <data name="ErrorWrongUserOrPassword" xml:space="preserve">
     <value>Error! Wrong User or Password</value>
