@@ -61,6 +61,15 @@ namespace MealPrep.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error! Food already exist..
+        /// </summary>
+        internal static string ErrorFoodAlreadyExist {
+            get {
+                return ResourceManager.GetString("ErrorFoodAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error! Food already exist in this meal..
         /// </summary>
         internal static string ErrorFoodAlreadyExistInMeal {
