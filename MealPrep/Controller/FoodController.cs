@@ -7,13 +7,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MealPrep.Properties;
 
 namespace MealPrep.Controller
 {
     public class FoodController : IFoodController
     {
-        private IFoodDao foodDao;
-        private const string FOOD_ALREADY_EXIST = "Food already exist";        
+        private IFoodDao foodDao;   
 
         public FoodController(IFoodDao foodDao)
         {
@@ -24,7 +24,7 @@ namespace MealPrep.Controller
         {
             if(GetAllFoods().Exists(p => p.FoodID == food.FoodID))
             {
-                throw new Exception("Food already exist");
+                throw new Exception(Resources.ErrorFoodAlreadyExist);
             }
             else
             {

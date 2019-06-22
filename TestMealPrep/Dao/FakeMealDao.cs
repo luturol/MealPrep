@@ -17,11 +17,11 @@ namespace TestMealPrep.Dao
             fakeDB = new Dictionary<int, Meal>();
         }
 
-        public bool AddMeal(Meal meal, User user)
+        public bool AddMeal(Meal meal)
         {
-            if(!GetAllMealsFromUser(user).Exists(m => m.MealID == meal.MealID))
+            if(!GetAllMealsFromUser(meal.User).Exists(m => m.Id == meal.Id))
             {
-                fakeDB.Add(meal.MealID, meal);
+                fakeDB.Add(meal.Id, meal);
                 return true;
             }
             else
@@ -30,16 +30,16 @@ namespace TestMealPrep.Dao
             }
         }
 
-        public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
+        /// <summary>
+        /// There is no need for this implementation for the FakeMealDao
+        /// </summary>
+        /// <param name="meal"></param>
+        /// <returns></returns>
+        public bool AddMealFood(Meal meal)
         {
-            foreach(MealFood mealFood in mealFoods)
-            {
-                meal.MealFoods.Add(mealFood);
-            }
-
             return true;
-        }   
-        
+        }
+
         public List<Meal> GetAllMealsFromUser(User user)
         {
             return fakeDB.Values.ToList();
@@ -47,7 +47,7 @@ namespace TestMealPrep.Dao
 
         public List<MealFood> GetMealFoods(Meal meal)
         {
-            return fakeDB.Values.SingleOrDefault(m => m.MealID == meal.MealID).MealFoods;
+            return fakeDB.Values.SingleOrDefault(m => m.Id == meal.Id).Foods;
         }
 
         public int GetNextId()

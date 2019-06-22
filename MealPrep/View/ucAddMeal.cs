@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Model;
 using MealPrep.Interfaces;
+using MealPrep.Properties;
 
 namespace MealPrep.View
 {
@@ -17,17 +18,12 @@ namespace MealPrep.View
     {
         private FoodController foodController;
         private MealController mealController;
-        private User user;
-        private const String MESSAGE_MEAL_ADD_WITH_SUCCESS = "Meal add with success!";
-        private const String ERROR_NECESSARY_TO_SELECT_A_FOOD = "Error! It's necessary to select a food.";
-        private const String ERROR_FOOD_ALREADY_EXIST_IN_MEAL = "Error! Food already exist in this meal.";
-        private const String ERRO_NECESSARY_TO_FILL_AMOUNT_OF_FOOD = "Error! It's necessary to fill amount of food";
-        private const String ERRO_NECESSARY_SELECT_WEIGHT_OF_FOOD = "Erro! It's necessary to select a weight of the food";
+        private User user;        
 
-        private const String COLUMN_FOOD_ID = "ID";
-        private const String COLUMN_FOOD_NAME = "NAME";
-        private const String COLUMN_FOOD_AMOUNT = "AMOUNT";
-        private const String COLUMN_FOOD_WEIGHT = "WEIGHT";
+        private const string COLUMN_FOOD_ID = "ID";
+        private const string COLUMN_FOOD_NAME = "NAME";
+        private const string COLUMN_FOOD_AMOUNT = "AMOUNT";
+        private const string COLUMN_FOOD_WEIGHT = "WEIGHT";
 
         public ucAddMeal(FoodController foodController, MealController mealController, User user)
         {
@@ -74,7 +70,7 @@ namespace MealPrep.View
             {
                 if (!ValidateFood())
                 {
-                    throw new Exception(ERROR_NECESSARY_TO_SELECT_A_FOOD);
+                    throw new Exception(Resources.ErrorNecessaryToSelectAFood);
                 }
                 else
                 {
@@ -98,7 +94,7 @@ namespace MealPrep.View
             DataTable tableFood = (DataTable)gcFoods.DataSource;
             if (tableFood.Select(COLUMN_FOOD_ID + "=" + food[0].Trim()).Count() > 0)
             {
-                throw new Exception(ERROR_FOOD_ALREADY_EXIST_IN_MEAL);
+                throw new Exception(Resources.ErrorFoodAlreadyExistInMeal);
             }
             else
             {
@@ -114,15 +110,15 @@ namespace MealPrep.View
         {
             if (cbFood.Text.Length == 0)
             {
-                throw new Exception(ERROR_NECESSARY_TO_SELECT_A_FOOD);
+                throw new Exception(Resources.ErrorNecessaryToSelectAFood);
             }
             else if (txtAmount.Text.Length == 0)
             {
-                throw new Exception(ERRO_NECESSARY_TO_FILL_AMOUNT_OF_FOOD);
+                throw new Exception(Resources.ErrorNecessaryToFillAmountOfFood);
             }
             else if (cbWeightFood.Text.Length == 0)
             {
-                throw new Exception(ERRO_NECESSARY_SELECT_WEIGHT_OF_FOOD);
+                throw new Exception(Resources.ErrorNecessaryToSelectWeightOfFood);
             }
             else
             {
@@ -138,18 +134,19 @@ namespace MealPrep.View
                 {
                     Meal meal = new Meal()
                     {
-                        MealDate = dateTimePicker1.Value,
-                        MealID = mealController.GetNextId(),
+                        Date = dateTimePicker1.Value,
+                        Id = mealController.GetNextId(),
                         User = user
                     };
-                    meal.MealFoods = GetAllFoods(meal.MealID);
-                    if(mealController.AddMeal(meal, user))
+                    meal.Foods = GetAllFoods(meal.Id);
+                    if (mealController.AddMeal(meal))
                     {
-                        MessageBox.Show(MESSAGE_MEAL_ADD_WITH_SUCCESS, TitleFactory.GetTitle(this.GetType()), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(Resources.MealAddedWithSuccess, TitleFactory.GetTitle(this.GetType()),
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBoxErrorType(ex.Message);
             }
@@ -159,11 +156,11 @@ namespace MealPrep.View
         {
             if (dateTimePicker1.Text.Length == 0)
             {
-                throw new Exception("Error! Necessary to pick a date for the meal.");
+                throw new Exception(Resources.ErrorNecessaryToPickADateForMeal);
             }
             else if (!ValidateGrid())
             {
-                throw new Exception("Error! Need to add a food to the meal.");
+                throw new Exception(Resources.ErrorNeedToAddFoodToMeal);
             }
             else
             {
@@ -182,15 +179,15 @@ namespace MealPrep.View
             List<MealFood> mealFoods = new List<MealFood>();
             DataTable tableFoods = (DataTable)gcFoods.DataSource;
             foreach (DataRow food in tableFoods.Rows)
-            {
-                mealFoods.Add(new MealFood
+            {                
+                mealFoods.Add(new MealFood()
                 {
-                    Food = foodController.GetAllFoods().Single(f => f.FoodID == int.Parse(food[COLUMN_FOOD_ID].ToString())),
-                    //Meal = mealController.GetAllMeals(user).Single(m => m.MealID == mealId),
+                    FoodId = int.Parse(food[COLUMN_FOOD_ID].ToString()),
                     Amount = double.Parse(food[COLUMN_FOOD_AMOUNT].ToString()),
                     Weigth = food[COLUMN_FOOD_WEIGHT].ToString(),                    
                 });
             }
+
             return mealFoods;
         }
 

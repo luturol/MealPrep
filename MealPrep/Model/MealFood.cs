@@ -8,9 +8,8 @@ namespace MealPrep.Model
 {
     public class MealFood
     {
-        public Food Food { get; set; }
-        public Meal Meal { get; set; }
+        public int FoodId { get; set; }
         public double Amount { get; set; }
-        public string Weigth { get; set; }
+        public string Weigth { get; set; }        
     }
 }

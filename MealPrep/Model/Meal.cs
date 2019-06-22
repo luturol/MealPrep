@@ -8,9 +8,9 @@ namespace MealPrep.Model
 {
     public class Meal
     {
-        public int MealID { get; set; }
-        public DateTime MealDate { get; set; }
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
         public User User { get; set; }        
-        public List<MealFood> MealFoods { get; set; }
+        public List<MealFood> Foods { get; set; }
     }
 }

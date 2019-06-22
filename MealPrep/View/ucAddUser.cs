@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Model;
+using MealPrep.Properties;
 
 namespace MealPrep.View
 {
     public partial class ucAddUser : UserControl
     {
         private UserController userController;
-        private const String ERROR_NEED_TO_FULL_FILL_THE_FORM = "Error! Need to full fill the form.";
-        private const String CONTROL_TITLE = "New User";
+        private const string CONTROL_TITLE = "New User";
 
         public ucAddUser(UserController userController)
         {
@@ -46,7 +46,7 @@ namespace MealPrep.View
             }
             else
             {
-                throw new Exception(ERROR_NEED_TO_FULL_FILL_THE_FORM);
+                throw new Exception(Resources.ErrorNeedToFullFillTheUserForm);
             }
         }
     }

@@ -10,9 +10,9 @@ namespace MealPrep.Interfaces
     public interface IMealDao
     {
         List<Meal> GetAllMealsFromUser(User user);
-        bool AddMeal(Meal meal, User user);        
+        bool AddMeal(Meal meal);        
         int GetNextId();
-        bool AddMealFood(List<MealFood> mealFoods, Meal meal);        
+        bool AddMealFood(Meal meal);        
         List<MealFood> GetMealFoods(Meal meal);
     }
 }

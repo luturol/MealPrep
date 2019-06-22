@@ -6,13 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MealPrep.Properties;
 
 namespace MealPrep.Controller
 {
     public class VitaminController
     {
         private VitaminDao vitaminDao;
-        private const string ERRO_VITAMIN_ALREADY_EXIST = "Vitamin already exist if this id {0} or this name {1}";
 
         public VitaminController(VitaminDao vitaminDao)
         {
@@ -39,7 +39,7 @@ namespace MealPrep.Controller
             }
             else
             {
-                throw new Exception(String.Format(ERRO_VITAMIN_ALREADY_EXIST, vitamin.VitaminID, vitamin.Name));
+                throw new Exception(String.Format(Resources.ErrorVitaminAlreadyExistWithThisIdOrThisName, vitamin.VitaminID, vitamin.Name));
             }
         }
 

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MealPrep.Properties;
 
 namespace MealPrep.Controller
 {
@@ -14,7 +15,6 @@ namespace MealPrep.Controller
     {
         private IMealDao mealDao;
         private FoodController foodController;
-        private const String ERROR_MEAL_ALREADY_EXIST = "Error! Meal already exist.";
 
         public MealController(IMealDao mealDao, FoodController foodController)
         {
@@ -22,49 +22,50 @@ namespace MealPrep.Controller
             this.foodController = foodController;
         }
 
-        public bool AddMeal(Meal meal, User user)
+        public bool AddMeal(Meal meal)
         {
-            if (GetAllMeals(user).Exists(m => m.MealID == meal.MealID))
+            if (GetAllMeals(meal.User).Exists(m => m.Id == meal.Id))
             {
-                throw new Exception(ERROR_MEAL_ALREADY_EXIST);
+                throw new Exception(Resources.ErrorMealAlreadyExist);
             }
             else
             {
-                return mealDao.AddMeal(meal, user);
+                return mealDao.AddMeal(meal);
             }
         }
 
-        public bool AddMealFood(List<MealFood> mealFoods, Meal meal)
+        public bool AddMealFood(Meal meal)
         {
-            return mealDao.AddMealFood(mealFoods, meal);
+            return mealDao.AddMealFood(meal);
         }
 
         private FullMeal CreateFullMeal(Meal meal)
         {
-            var amount = meal.MealFoods.Sum(a => a.Amount);
+            var amount = meal.Foods.Sum(a => a.Amount);
+            List<int> foodIds = meal.Foods.Select(e => e.FoodId).ToList();
+            List<Food> foods = foodController.GetAllFoods().FindAll(food => foodIds.Contains(food.FoodID));
             double calories = 0;
             double carbs = 0;
             double protein = 0;
             double fat = 0;
-            foreach (var f in meal.MealFoods)
+            foreach (var food in foods)
             {
-                calories += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Calories, f.Food.Amount);
-                carbs += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Carbs, f.Food.Amount);
-                protein += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Protein, f.Food.Amount);
-                fat += UsefulAlgorithms.By3Rule(f.Amount, f.Food.Fat, f.Food.Amount);
+                calories += UsefulAlgorithms.By3Rule(food.Amount, food.Calories, food.Amount);
+                carbs += UsefulAlgorithms.By3Rule(food.Amount, food.Carbs, food.Amount);
+                protein += UsefulAlgorithms.By3Rule(food.Amount, food.Protein, food.Amount);
+                fat += UsefulAlgorithms.By3Rule(food.Amount, food.Fat, food.Amount);
             }
 
             return new FullMeal()
             {
                 Amount = amount,
-                Foods = meal.MealFoods.Select(f => f.Food).ToList(),
-                MealId = meal.MealID,
+                MealId = meal.Id,
                 Calories = calories,
                 Carbs = carbs,
                 Fat = fat,
                 Protein = protein,
                 Weigth = "g",
-                Date = meal.MealDate
+                Date = meal.Date
             };
         }
 

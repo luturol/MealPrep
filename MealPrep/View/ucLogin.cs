@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MealPrep.Controller;
 using MealPrep.Model;
+using MealPrep.Properties;
 
 namespace MealPrep.View
 {
@@ -17,10 +18,8 @@ namespace MealPrep.View
         private UserController userController;
         private MealController mealController;
         private FoodController foodController;
-        private VitaminController vitaminController;
-        private const String ERROR_NEED_TO_FULL_FILL_THE_FORM = "Error! Need to full fill the form.";
-        private const String ERROR_WRONG_USER_OR_PASSWORD = "Error! Wrong User or Password";
-        private const String CONTROL_TITLE = "Login";
+        private VitaminController vitaminController;                
+        private const string CONTROL_TITLE = "Login";
 
         public ucLogin(UserController userController, MealController mealController,
                        FoodController foodController, VitaminController vitaminController)
@@ -55,7 +54,7 @@ namespace MealPrep.View
             }
             else
             {
-                throw new Exception(ERROR_NEED_TO_FULL_FILL_THE_FORM);
+                throw new Exception(Resources.ErrorNeedToFullFillLoginAndPassword);
             }
         }
 
@@ -63,14 +62,14 @@ namespace MealPrep.View
         {
             if(userController.ValidateLogin(user))
             {
-                MessageBox.Show("Welcome to MealPrep!", CONTROL_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.WelcomeToMealPrep, CONTROL_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Control parent = GetParentForm();
                 parent.Controls.Clear();
                 parent.Controls.Add(new ucHomePage(mealController, foodController, vitaminController, user));
             }
             else
             {
-                throw new Exception(ERROR_WRONG_USER_OR_PASSWORD);
+                throw new Exception(Resources.ErrorWrongUserOrPassword);
             }
         }
 
