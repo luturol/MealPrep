@@ -24,6 +24,9 @@ namespace TestMealPrep.Controller
             Protein = 100,
             FoodVitamins = new List<FoodVitamin>()
         };
+        private MealController mealController;
+        private IFoodDao foodDao;
+        private IMealDao mealDao;
 
         private MealController CreateMealController()
         {
@@ -33,7 +36,7 @@ namespace TestMealPrep.Controller
 
             foodController.AddFood(FOOD);
 
-            MealController mealController = new MealController(mealDao, foodController);
+            MealController mealController = new MealController(mealDao, foodDao);
             return mealController;
         }
 
@@ -42,7 +45,7 @@ namespace TestMealPrep.Controller
             MealFood mealFood = new MealFood()
             {
                 FoodId = 1,
-                Amount = 100,
+                Amount = 150,
                 Weigth = "g"
             };
 
@@ -61,16 +64,18 @@ namespace TestMealPrep.Controller
         [TestInitialize]
         public void Initialize()
         {
-            var controller = MockRepository.GenerateStub<IMealController>();
+            foodDao = MockRepository.GenerateStub<IFoodDao>();
+            mealDao = MockRepository.GenerateStub<IMealDao>();
+            mealController = MockRepository.GenerateMock<MealController>(mealDao, foodDao);
         }
 
         [TestMethod]
         public void ShouldBeAbleToAddNewMeal()
         {
-            //Arrange            
-            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), new FoodController(new FakeFoodDao()));
+            //Arrange                        
             var meal = CreateMeal(0, USER, DateTime.Today);
             mealController.Stub(x => x.GetAllMeals(Arg<User>.Is.Anything)).Return(new List<Meal>());
+            mealDao.Stub(x => x.AddMeal(Arg<Meal>.Is.Anything)).Return(true);
 
             //Act
             bool actual = mealController.AddMeal(meal);
@@ -93,27 +98,23 @@ namespace TestMealPrep.Controller
                 FoodVitamins = new List<FoodVitamin>(),
                 Name = "Chicken",
                 Protein = 13
-            };
-            var FoodController = new FoodController(new FakeFoodDao());
-            FoodController.AddFood(food);
-            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), FoodController);
+            };        
 
             var meal = CreateMeal(0, USER, DateTime.Today);
-            mealController.Stub(x => x.GetAllMeals(Arg<User>.Is.Anything)).Return(new List<Meal>() { meal });
-
+            mealDao.Stub(x => x.GetAllMealsFromUser(Arg<User>.Is.Anything)).Return(new List<Meal>() { meal });
+            foodDao.Stub(x => x.GetAllFoods()).Return(new List<Food>() { food });
             //Act
             FullMeal fullMeal = mealController.GetMealWithFoods(USER).Find(e => e.MealId == 0);
 
             //Assert
-            Assert.AreEqual(fullMeal.Calories, 100);
+            Assert.AreEqual(fullMeal.Calories, 150);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception), "Error! Meal already exist.")]
         public void ShouldBeAbleToUpdateMealGivingMealWithExistingID()
         {
-            //Arrange
-            var mealController = MockRepository.GenerateMock<MealController>(new FakeMealDao(), new FoodController(new FakeFoodDao()));
+            //Arrange            
             var meal = CreateMeal(0, USER, DateTime.Today);
             mealController.Stub(x => x.GetAllMeals(Arg<User>.Is.Anything)).Return(new List<Meal>() { meal });
             var newMeal = CreateMeal(0, USER, DateTime.Today.AddDays(1));

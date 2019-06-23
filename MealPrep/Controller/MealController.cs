@@ -14,12 +14,12 @@ namespace MealPrep.Controller
     public class MealController : IMealController
     {
         private IMealDao mealDao;
-        private FoodController foodController;
+        private IFoodDao foodDao;
 
-        public MealController(IMealDao mealDao, FoodController foodController)
+        public MealController(IMealDao mealDao, IFoodDao foodDao)
         {
             this.mealDao = mealDao;
-            this.foodController = foodController;
+            this.foodDao = foodDao;
         }
 
         public bool AddMeal(Meal meal)
@@ -43,17 +43,18 @@ namespace MealPrep.Controller
         {
             var amount = meal.Foods.Sum(a => a.Amount);
             List<int> foodIds = meal.Foods.Select(e => e.FoodId).ToList();
-            List<Food> foods = foodController.GetAllFoods().FindAll(food => foodIds.Contains(food.FoodID));
+            List<Food> foods = foodDao.GetAllFoods().FindAll(food => foodIds.Contains(food.FoodID));
             double calories = 0;
             double carbs = 0;
             double protein = 0;
             double fat = 0;
             foreach (var food in foods)
             {
-                calories += UsefulAlgorithms.By3Rule(food.Amount, food.Calories, food.Amount);
-                carbs += UsefulAlgorithms.By3Rule(food.Amount, food.Carbs, food.Amount);
-                protein += UsefulAlgorithms.By3Rule(food.Amount, food.Protein, food.Amount);
-                fat += UsefulAlgorithms.By3Rule(food.Amount, food.Fat, food.Amount);
+                var amountTotal = meal.Foods.First(f => f.FoodId == food.FoodID).Amount;
+                calories += UsefulAlgorithms.By3Rule(amountTotal, food.Calories, food.Amount);
+                carbs += UsefulAlgorithms.By3Rule(amountTotal, food.Carbs, food.Amount);
+                protein += UsefulAlgorithms.By3Rule(amountTotal, food.Protein, food.Amount);
+                fat += UsefulAlgorithms.By3Rule(amountTotal, food.Fat, food.Amount);
             }
 
             return new FullMeal()
@@ -69,7 +70,7 @@ namespace MealPrep.Controller
             };
         }
 
-        public virtual List<Meal> GetAllMeals(User user)
+        public List<Meal> GetAllMeals(User user)
         {
             return mealDao.GetAllMealsFromUser(user);
         }
